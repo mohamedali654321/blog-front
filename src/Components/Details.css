@@ -1,0 +1,318 @@
+.Container{
+    padding: 170px 0 0;
+}
+
+.Container .HomeLinkWrapper{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 83.3333333333%;
+    max-width: 1200px;
+    z-index: 1;
+}
+
+.Container .HomeLinkWrapper .home-link {
+    display: inline-block;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #8c4bff;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 1.2px;
+    margin-bottom: 16px;
+}
+ 
+.home-link .HomeLinkContainer{
+    display: flex;
+    flex-direction:row-reverse;
+    align-items: center;
+    text-transform: uppercase;
+    color: #8c4bff;
+}
+
+ 
+.home-link .HomeLinkContainer .label{
+    font-size: 13px;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    color: #8c4bff;
+}
+
+.SmallArrow{
+    margin-right: 14px;
+    margin-left: 0;
+    transform: scaleX(-1);
+    transition:.4s cubic-bezier(0.2, 0.82, 0.2, 1);
+    will-change: transform;
+    width: 11px;
+    height: 12px;
+    transform-origin: center;
+    overflow: hidden;
+    text-transform: uppercase;
+    fill: #8c4bff;
+    letter-spacing: 1.2px;
+}
+
+.home-link:hover svg{
+    transform: translateX(-10px) scaleX(-1);
+}
+
+.Container .styles-gradient-right{
+    position: relative;
+    width: 100%;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    top: 15px;
+}
+
+.Container .styles-gradient-right .style-wrapper{
+    /* background: linear-gradient(
+    180deg
+   ,#ebf4fd,hsla(0,0%,100%,0) 10%,hsla(0,0%,100%,0) 80%,#ebf4fd); */
+   background: #ebf4fd;
+    /* background: linear-gradient(
+     190deg,#ebf4fd,hsla(0,0%,100%,0) 45%); */
+    padding: 135px 0 105px;
+    box-sizing: border-box;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 83.3%;
+    max-width: 1200px;
+    z-index: 1;
+
+}
+
+.style-wrapper .Wrapper-bg{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 83.3%;
+    max-width: 1200px;
+    z-index: 1;
+}
+
+.style-wrapper .Wrapper-bg .innerWrapper{
+    width: 97.6666666667%;
+    max-width: 980px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Wrapper-bg .innerWrapper .Title{
+    
+    font-size: 45px;
+    line-height: 1.19;
+    font-weight: 700;
+    color: #1d1b84;
+    text-align: center;
+    margin-bottom: 56px;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 80%;
+}
+
+.innerWrapper .Ratio{
+    padding-bottom: 62.5%;
+    margin-bottom: 80px;
+    border-radius: 8px;
+    box-shadow: 0 6px 10px rgb(0 0 0 / 8%);
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.innerWrapper .Ratio .children {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.innerWrapper .Ratio .children .ImageCover{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: block;
+    height: 100%;
+    
+}
+.children .ImageCover .style-ratio{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+}
+.children .ImageCover .style-ratio .Img{
+    opacity: 1;
+    visibility: inherit;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.styles-gradient-right .ContentWrapper{
+    width: 83.3333333333%;
+    max-width: 1200px;
+    z-index: 1;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.styles-gradient-right .ContentWrapper .ContentContainer{
+    position: relative;
+
+}
+
+.ShareContainer{
+    
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+}
+
+.ShareContainer .share{
+    display: block;
+    position: sticky;
+    top: 100px;
+    padding-bottom: 100px;
+    flex-direction: column;
+    list-style: none;
+    
+}
+
+.ShareContainer ul{
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    
+    
+}
+
+
+.share .socialMedia{
+
+    position: relative;
+    display: list-item;
+    text-align: -webkit-match-parent;
+   
+}
+
+ .Button{
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+    float: left;
+    margin: 5px -20px ;
+    overflow: hidden;
+    background: #fff;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0px 10px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease-out;
+  }
+     .Button:hover{
+    width: 200px;
+  }
+   .Button .Icon{
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+    text-align: center;
+    border-radius: 50px;
+    box-sizing: border-box;
+    line-height: 60px;
+    transition: all 0.3s ease-out;
+  }
+  .Button:nth-child(1):hover .Icon{
+    background: #4267B2;
+    
+  }
+   .Button:nth-child(2):hover .IconTwitter{
+    background: #1DA1F2;
+  }
+  .Button:nth-child(3):hover .Icon{
+    background: #E1306C;
+  }
+  .Button:nth-child(4):hover .Icon{
+    background: #333;
+  }
+ .Button:nth-child(5):hover .Icon{
+    background: #ff0000;
+  }
+    .Button .Icon i{
+    font-size: 25px;
+    line-height: 60px;
+    transition: all 0.3s ease-out;
+  }
+   .Button:hover .Icon i{
+    color: #fff;
+  }
+ .Button span{
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 60px;
+    margin-left: 10px;
+    transition: all 0.3s ease-out;
+  }
+ .Button:nth-child(1) span{
+    color: #4267B2;
+    
+  }
+   .Button:nth-child(2) span{
+    color: #1DA1F2;
+  }
+   .Button:nth-child(3) span{
+    color: #E1306C;
+  }
+     .Button:nth-child(4) span{
+    color: #333;
+  }
+  .Button:nth-child(5) span{
+    color: #ff0000;
+  }
+
+
+  .InnerContentContainer{
+    width: 81.6666666667%;
+    max-width: 980px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+
+  }
+
+  .InnerContentContainer .Content{
+    padding: 58px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 1px 4px 0 rgb(117 141 166 / 21%);
+  }
+
+
+
+
+
+
+
+
+
+
+

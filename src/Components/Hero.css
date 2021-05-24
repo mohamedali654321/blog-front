@@ -228,7 +228,7 @@ width: 100%;
 }
 
 .articles .cardsGrid{
-    opacity: 1;
+    opacity: 0;
     grid-gap: 24px;
     grid-template-columns: repeat(3,minmax(25%,1fr));
     margin: 85px 0 0;
@@ -241,8 +241,30 @@ width: 100%;
     transform: translateZ(0);
     margin-left: auto;
     margin-right: auto;
+
+    animation: CardAnimation  ;
+    animation-duration: 1s;
+    animation-fill-mode: forwards ;
+    animation-delay: .5s;
     
+
 }
+
+@keyframes CardAnimation{
+    0%{
+        opacity: 0;
+        transform: translateZ(-1000px) translateX(-1000px);
+      
+    }
+    100%{
+        opacity: 1;
+        transform: translateZ(1000px) translateX(0);
+        
+    }
+
+}
+
+
 
 
 .articles .buttonContainer{

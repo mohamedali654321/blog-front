@@ -4,8 +4,8 @@ import './FilterBar.css'
 
 function FilterBar() {
      const [categories,setCategories]=useState([]);
-     const endPoint='http://54.220.211.123:1339/categories'
-    const category=["Guides & Tutorials","Product","Strapi","Community","Announcement","Strapi","Community","Announcement"];
+     const endPoint='http://54.220.211.123:1334/categories'
+    
     const [show,setShow]=useState(false);
     const showCategory =()=>{
         setShow(!show)

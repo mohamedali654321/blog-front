@@ -1,11 +1,12 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import './Card.css'
 
 
 function Card(props) {
     return (
         <div className="cardContainer">
-            <a href="" className="cardArrowLink">
+            <Link to={`/blog/${props.slug}`} className="cardArrowLink">
                 <div className="card-bg">
                     <div className="background"></div>
                 </div>
@@ -52,7 +53,7 @@ function Card(props) {
 
                 </div>
 
-            </a>
+            </Link>
 
         </div>
     )
