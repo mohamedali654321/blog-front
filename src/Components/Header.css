@@ -16,6 +16,7 @@
         backdrop-filter: blur(25px);
         justify-items: flex-end;
         background: #4B0082;
+       
 }
 
 .HeaderScrolled a{
@@ -119,70 +120,12 @@ align-items: center;
 height: 55px;
 }
 
-.HeaderGroup .btnLink:hover{
-    transform: perspective(150px) translate3d(0px, 0px, 10px);
-   
-    
-    
-}
-
-.HeaderGroup .shadow{
-    top: 50%;
-    left: 50%;
-    opacity: 1;
-    transform: translate(-50%,-50%);
-    position: relative;
-    width: 100%;
-    height: 100%;
-    box-shadow: 0 1px 4px rgb(26 26 67 / 10%);
-    
-
-}
-
-.HeaderScrolled .btnLink  {
-
-    color: #1d1b84 !important;
-}
-
-.HeaderScrolled .btnLink:hover  {
-
-    color: #1d1b84 !important;
-}
-
-
-.HeaderGroup .btnLink{
-    color: #1d1b84;
-    position: relative;
-    background-color: #fff;
-    cursor: pointer;
-    display: inline-block;
-    padding: 18px 30px;
-    border:  1px solid rgba(114, 110, 110, 0.25) ;
-    text-decoration: none;
-    text-align: center;
-    outline: none;
-    width: 100%;
-    box-sizing: border-box;
-    transform: translateZ(1000px);
-    font-size: 15px;
-    font-weight: 600;
-    line-height: 1;
-    border-radius: 10px;
-    z-index: 1;
-    box-shadow: rgb(26 26 67 / 10%);
-    transform: perspective(800px) ;
-    transition: .5s cubic-bezier(0.2, 0.82, 0.2, 1) ease-in-out;
-      
-         
-    
-
-}
 
 
 
 
 .HeaderGroup a{
-    color: #4a0391;
+    color: #740ac0;
     font-weight: 700;
     transition: 0.5s;
 }
@@ -323,4 +266,107 @@ height: 55px;
     transition: color .4s ease;
     height: 50px;
     font-weight: 500;
+}
+
+.ToggleContainer{
+  position: relative;
+  margin-left: 20px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+ .en{
+    color: #c47ef7;
+    position: absolute;
+   margin-top: 10px;
+    margin-left: -20px;
+}
+
+ .ar{
+    color: #740ac0;
+    position: absolute;
+    margin-top: 12px;
+    margin-left: -7px;
+}
+
+
+.HeaderGroup .check{
+    appearance: none;
+    width: 70px;
+    height: 33px;
+    border: 1px solid #ccc;
+    border-radius: 40px;
+    margin-right: 20px;
+    margin-left: 20px;
+    box-shadow: 2px 2px 5px #ccc;
+    transition: .4s;
+    cursor: pointer;
+    border: none;
+    position: relative;
+    
+}
+
+.HeaderGroup .check:checked{
+    background-color: #740ac0;
+}
+
+.HeaderGroup .check::after{
+    content: '';
+    display: block;
+    border: 1px solid #ccc;
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    background-color: #740ac0;
+    transform: scale(1.1);
+    transition:all .4s ease-in-out;
+    box-shadow: 1px 1px 4px #ccc;
+}
+
+.HeaderGroup .check:checked::after{
+
+   transform: translateX(100%) scale(1.1);
+   background-color: #fff;
+}
+
+.HeaderScrolled  .ar{
+    color: #fff !important;
+}
+
+.HeaderScrolled  .en{
+    color: #fff !important;
+}
+
+.HeaderScrolled .check:checked{
+    background-color: #fff;
+}
+
+.HeaderScrolled .check::after{
+    content: '';
+    display: block;
+    border: 1px solid #ccc;
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    background-color: #740ac0;
+    transform: scale(1.1);
+    transition:all .4s ease-in-out;
+    box-shadow: 1px 1px 3px #ccc;
+}
+
+.HeaderScrolled .check{
+    appearance: none;
+    width: 70px;
+    height: 33px;
+    border: 1px solid #ccc;
+    border-radius: 40px;
+    margin-right: 20px;
+    margin-left: 20px;
+    box-shadow: 2px 2px 2px #ccc;
+    transition: .4s;
+    cursor: pointer;
+    border: none;
+    position: relative;
+    background-color:#fff ;
+    
 }

@@ -201,7 +201,7 @@ flex: 1 1;
 .listCardContent h2{
     margin-bottom: 12px;
     font-weight: 600;
-    color: #1d1b84;
+    color: #740ac0;
     font-size: 17px;
     line-height: 1.5;
     width: 300px;
@@ -215,7 +215,7 @@ flex: 1 1;
     font-size: 14px;
     font-weight: 500;
     line-height: 22px;
-    color: #4e6294;
+    color: #9c45da;
     width: 300px;
     
 }
@@ -235,12 +235,12 @@ flex: 1 1;
 .listCardContent .author .name{
     font-size: 13px;
     line-height: 19px;
-    color: #1d1b84
+    color: #740ac0;
 }
 .listCardContent .author .date{
     margin-top: -10px;
     font-size: 11px;
     line-height: 18px;
-    color: #4e6294;
+    color: #9c45da;
 
 }

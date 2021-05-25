@@ -2,7 +2,7 @@ import React from 'react'
 
 import MegMenu from './MegaMenu'
 import './Header.css'
-
+import {Link} from 'react-router-dom'
 
 
 class Header extends React.Component {
@@ -48,44 +48,21 @@ class Header extends React.Component {
 
            <ul className="links">
            <li className="NavigationLabel">
-           <a href="/courses" className="cool">عملاؤنا</a> 
-           
-          
-          
-             
-
-           </li>
-           <li className="NavigationLabel"><a href="/downloads" className="cool">شركاؤنا</a></li>
-           <li className="NavigationLabel"><a href="/workshops" className="cool">خدماتنا </a></li>
-           <li className="NavigationLabel"><a href="/buy" className="cool">المنتدي </a></li>
-           <li className="NavigationLabel"><a href="/workshops" className="cool">المدونه</a></li>
-           <li className="NavigationLabel"><a href="/downloads" className="cool">نظم وحلول</a></li>
-           <li className="NavigationLabel"><a href="/courses" className="cool">الرئيسية</a></li>
+           <Link to="/our-clients" className="cool">عملاؤنا</Link> </li>          
+           <li className="NavigationLabel"><Link to="/our-partners" className="cool">شركاؤنا</Link></li>
+           <li className="NavigationLabel"><Link to="/services" className="cool">خدماتنا </Link></li>
+           <li className="NavigationLabel"><Link to="/forum" className="cool">المنتدي </Link></li>
+           <li className="NavigationLabel"><Link to="/blog" className="cool">المدونه</Link></li>
+           <li className="NavigationLabel"><Link to="/sys-solutions" className="cool">نظم وحلول</Link></li>
+           <li className="NavigationLabel"><Link to="/" className="cool">الرئيسية</Link></li>
            
 
            </ul>
-          {/* <a href="/courses" className="cool">عملاؤنا</a>    
-         <div> <a href="/downloads" className="cool">شركاؤنا</a></div>
-         <div> <a href="/workshops" className="cool">خدماتنا </a></div>
-         <div> <a href="/buy" className="cool">المنتدي </a></div>
-         <div> <a href="/workshops" className="cool">المدونه</a></div>
-         <div> <a href="/downloads" className="cool">نظم وحلول</a></div>
-         <div> <a href="/courses" className="cool">الرئيسية</a></div> */}
-         
-
-          <iframe src="https://ghbtns.com/github-btn.html?user=strapi&repo=strapi&type=star&count=true" frameborder="0" scrolling="0" height="20" width="114" title="Star Strapi on GitHub" />
-          <div className="btn">
-
-            <span className="shadow"></span>
-            <div className="background">
-              <div className="hover">
-
-
-              </div>
-
-            </div>
-            <a href=""  className="btnLink">Get Started</a>
-
+    
+          <div className="ToggleContainer">
+          <span className="en">EN</span>
+            <input type="checkbox" className="check" />
+            <span className="ar">AR</span>
           </div>
 
 

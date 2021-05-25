@@ -108,7 +108,7 @@
     font-size: 45px;
     line-height: 1.19;
     font-weight: 700;
-    color: #1d1b84;
+    color: #6514a0;
     text-align: center;
     margin-bottom: 56px;
     justify-content: center;
@@ -241,23 +241,13 @@
     box-sizing: border-box;
     line-height: 60px;
     transition: all 0.3s ease-out;
+    color: #662dc9;
   }
   .Button:nth-child(1):hover .Icon{
-    background: #4267B2;
+    background: #8c4bff;
     
   }
-   .Button:nth-child(2):hover .IconTwitter{
-    background: #1DA1F2;
-  }
-  .Button:nth-child(3):hover .Icon{
-    background: #E1306C;
-  }
-  .Button:nth-child(4):hover .Icon{
-    background: #333;
-  }
- .Button:nth-child(5):hover .Icon{
-    background: #ff0000;
-  }
+  
     .Button .Icon i{
     font-size: 25px;
     line-height: 60px;
@@ -273,22 +263,8 @@
     margin-left: 10px;
     transition: all 0.3s ease-out;
   }
- .Button:nth-child(1) span{
-    color: #4267B2;
-    
-  }
-   .Button:nth-child(2) span{
-    color: #1DA1F2;
-  }
-   .Button:nth-child(3) span{
-    color: #E1306C;
-  }
-     .Button:nth-child(4) span{
-    color: #333;
-  }
-  .Button:nth-child(5) span{
-    color: #ff0000;
-  }
+ 
+  
 
 
   .InnerContentContainer{
@@ -358,7 +334,7 @@
     font-size: 13px;
     line-height: 19px;
     font-weight: 400;
-    color: #4e6294;
+    color: #9c45da;
     margin-top: -10px;
     
   }
@@ -374,7 +350,7 @@
 
   blockquote{
     padding: 0 16px;
-    color: #4e6294;
+    color: #9c45da;
     border-left: 4px solid rgba(27,31,35,.1);
     margin-bottom: 35px;
     quotes: none;
@@ -385,7 +361,7 @@
     font-size: 17px;
     font-weight: 400;
     line-height: 28px;
-    color: #4e6294;
+    color: #9c45da;
     word-break: break-word;
     white-space: pre-line;
  }
@@ -469,7 +445,9 @@ color: #5813cf;
     opacity: 1;
     transform: perspective(1000px) translate3d(0px, 0px, 0px);
     will-change: opacity,transform;
-    color: #1d1b84;
+    color: #740ac0;
+    
+
 }
  .RelatedArticlesWrapper{
   position: relative;
