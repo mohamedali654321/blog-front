@@ -8,6 +8,7 @@ import Hero from './Components/Hero';
 import Newsletter from './Components/Newsletter';
 import MainPage from './Components/MainPage';
 import Details from './Components/Details';
+import MiniCard from './Components/MiniCard'
 
 
 
@@ -20,6 +21,8 @@ function App() {
       <Switch>
         <Route path="/" exact component={MainPage} />
         <Route path="/blog/:slug" exact component={Details}/>
+        
+
       </Switch>
       
      

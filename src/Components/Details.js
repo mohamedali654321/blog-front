@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import NewsLetterBanner from './NewsLetterBanner';
 import MiniCard from './MiniCard';
+import Card from './Card'
 
 function Details({ match }) {
     const slug = match.params.slug;
@@ -23,7 +24,7 @@ function Details({ match }) {
                 
             })
             .catch(err => console.log(err))
-    }, []);
+    }, [details]);
 
 
     useEffect(() => {
