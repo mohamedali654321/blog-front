@@ -8,10 +8,11 @@ import MiniCard from './MiniCard';
 function Details({ match }) {
     const slug = match.params.slug;
     const [details, SetDetails] = useState([]);
-    const [categories, setCategories] = useState();
     const [cardData, setCardData] = useState([])
     const BACKEND_URL = "http://54.220.211.123:1334";
     const endPoint = `http://54.220.211.123:1334/articles/${slug}`;
+    const ri=Math.floor(Math.random() * cardData.length);
+    console.log(ri)
 
     useEffect(() => {
         axios.get(endPoint)
@@ -19,22 +20,22 @@ function Details({ match }) {
 
                 await SetDetails(res.data);
 
-                await setCategories(res.data.category.slug)
+                
             })
             .catch(err => console.log(err))
-    }, [details]);
+    }, []);
 
 
     useEffect(() => {
-        axios.get(`http://54.220.211.123:1334/categories/${categories}`)
+        axios.get('http://54.220.211.123:1334/articles')
             .then(async res => {
-                await console.log(res.data)
+               
                 await setCardData(res.data);
 
 
             })
             .catch(err => console.log(err))
-    }, [categories])
+    }, [])
 
 
 
@@ -195,21 +196,21 @@ function Details({ match }) {
                     <div className="RelatedArticlesWrapper">
                         <div className="InnerCardGrid">
                             <div className="CardGrid">
-                            { cardData.articles &&(
-                                cardData.articles.slice(0,3).map(article=>(
-                                    <MiniCard
-                                        image={BACKEND_URL + article.image.url}
-                                           
-                                           title={article.title}
-                                           text={article.text}
-                                           name={article.author}
-                                           date={article.date}
-                                           slug={article.slug}
-                                    />
-                                ))
-                            )
-                               
-                            }
+                                { cardData.length > 0  && (
+                                    cardData.slice(3, 6).map(article => (
+                                        <MiniCard
+                                            image={BACKEND_URL + article.image.url}
+
+                                            title={article.title}
+                                            text={article.text}
+                                            name={article.author}
+                                            date={article.date}
+                                            slug={article.slug}
+                                        />
+                                    ))
+                                ) 
+
+                                }
 
                             </div>
                         </div>
