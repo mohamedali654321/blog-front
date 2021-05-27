@@ -130,7 +130,7 @@ width: 100%;
     transform: perspective(1000px) translate3d(0px, 0px, 0px);
     will-change: opacity,transform;
     text-align: center;
-    color: #1d1b84;
+    color: #6514a0;
     font-weight: bolder;
     line-height: 56px;
     font-size: 43px;
@@ -224,7 +224,7 @@ width: 100%;
     margin: 0 0 0 auto;
     text-align: center;
     white-space: nowrap;
-    color: #4e6294;
+    color: #9f4fd8;
 }
 
 .articles .cardsGrid{
@@ -282,7 +282,7 @@ width: 100%;
 
 .buttonContainer .styles-button{
     background-color: transparent;
-    color: #4e6294;
+    color: #9f4fd8;
     width: auto;
     position: relative;
     display: inline-block;

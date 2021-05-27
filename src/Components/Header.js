@@ -60,9 +60,9 @@ class Header extends React.Component {
            </ul>
     
           <div className="ToggleContainer">
-          <span className="en">EN</span>
+          
             <input type="checkbox" className="check" />
-            <span className="ar">AR</span>
+            
           </div>
 
 

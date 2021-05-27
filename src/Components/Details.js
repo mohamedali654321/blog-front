@@ -28,7 +28,17 @@ function Details({ match }) {
             .catch(err => console.log(err))
     }, [details]);
 
+    let keywords=[];
+    if(details.keywords){
+        details.keywords.map(item=>{
 
+            keywords.push(item.word.toLocaleLowerCase())
+        });
+        
+    }
+
+    
+ 
     useEffect(() => {
         axios.get('http://54.220.211.123:1334/articles')
             .then(async res => {
@@ -38,23 +48,34 @@ function Details({ match }) {
             .catch(err => console.log(err))
     }, []);
 
-    const words=title.split(" ");
-    const keywords=[];
-    for (let word of words) {
-        if(word.length > 3){
-            keywords.push(word.toLocaleLowerCase())
-        }  
-    }
+    
+
    
      let intersted= cardData.filter(card=>{
-         for(let i=0;i< keywords.length ; i++)
-        {
-             
-            return  card.title.toLocaleLowerCase().includes(keywords[i]);   
+         if(keywords.length > 0){
+            for(let i=0;i< keywords.length ; i++)
+            {
+                 
+                return  card.title.toLocaleLowerCase().includes(keywords[i]);   
+             }
+
          }
+         else{
+            return  card.title.toLocaleLowerCase().includes("strapi");
+         }
+       
       
     });
-    console.log(intersted)
+
+    for(let i=0; i<intersted.length;i++)
+    {
+        if(title === intersted[i].title)
+         {
+             intersted.splice(i,1);
+         }
+
+    }
+    
     return (
         <div className="Container" >
             <div className="HomeLinkWrapper">
@@ -204,12 +225,12 @@ function Details({ match }) {
                     <div className="RelatedArticlesWrapper">
                         <div className="InnerCardGrid">
                             <div className="CardGrid">
-                                { intersted.image && intersted.length > 0 ? (
+                                { intersted && intersted.length > 0  && (
 
                                     intersted.slice(0, 3).map(article => (
 
                                         <MiniCard
-                                            image={BACKEND_URL + article.image.url}
+                                            image={article.image ? BACKEND_URL + article.image.url : null}
                                             title={article.title}
                                             text={article.text}
                                             name={article.author}
@@ -217,7 +238,7 @@ function Details({ match }) {
                                             slug={article.slug}
                                         />
                                     ))
-                                ) : <p style={{textAlign:"center",position:"relative",padding:"0 auto",alignItems:"center"}}>No result</p>
+                                ) 
 
                                 }
 

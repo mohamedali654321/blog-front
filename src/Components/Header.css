@@ -11,7 +11,7 @@
     
 }
 .HeaderScrolled{
-        opacity: .8;
+        opacity: 1;
         padding: 15px 0;
         backdrop-filter: blur(25px);
         justify-items: flex-end;
@@ -292,8 +292,8 @@ height: 55px;
 
 .HeaderGroup .check{
     appearance: none;
-    width: 70px;
-    height: 33px;
+    width: 50px;
+    height: 23px;
     border: 1px solid #ccc;
     border-radius: 40px;
     margin-right: 20px;
@@ -304,18 +304,20 @@ height: 55px;
     border: none;
     position: relative;
     
+    
 }
 
 .HeaderGroup .check:checked{
     background-color: #740ac0;
+    
 }
 
 .HeaderGroup .check::after{
     content: '';
     display: block;
     border: 1px solid #ccc;
-    width: 33px;
-    height: 33px;
+    width: 23px;
+    height: 23px;
     border-radius: 50%;
     background-color: #740ac0;
     transform: scale(1.1);
@@ -327,6 +329,8 @@ height: 55px;
 
    transform: translateX(100%) scale(1.1);
    background-color: #fff;
+   
+  
 }
 
 .HeaderScrolled  .ar{
