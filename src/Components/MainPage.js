@@ -1,11 +1,11 @@
 import React from 'react'
-import Hero from './Hero'
+import Blog from './Blog'
 import Newsletter from './Newsletter'
 
 function MainPage() {
     return (
         <div>
-        <Hero/>
+        <Blog/>
         <Newsletter/>
             
         </div>

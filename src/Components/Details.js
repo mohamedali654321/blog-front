@@ -9,17 +9,19 @@ import Card from './Card'
 function Details({ match }) {
     const slug = match.params.slug;
     const [details, SetDetails] = useState([]);
-    const [cardData, setCardData] = useState([])
+    const [cardData, setCardData] = useState([]);
+    const [title,setTitle]=useState('');
     const BACKEND_URL = "http://54.220.211.123:1334";
     const endPoint = `http://54.220.211.123:1334/articles/${slug}`;
-    const ri=Math.floor(Math.random() * cardData.length);
-    console.log(ri)
+    
+   
 
     useEffect(() => {
         axios.get(endPoint)
             .then(async res => {
 
                 await SetDetails(res.data);
+                await setTitle(res.data.title)
 
                 
             })
@@ -32,19 +34,27 @@ function Details({ match }) {
             .then(async res => {
                
                 await setCardData(res.data);
-
-
             })
             .catch(err => console.log(err))
-    }, [])
+    }, []);
 
-
-
-
-
-
-
-
+    const words=title.split(" ");
+    const keywords=[];
+    for (let word of words) {
+        if(word.length > 3){
+            keywords.push(word.toLocaleLowerCase())
+        }  
+    }
+   
+     let intersted= cardData.filter(card=>{
+         for(let i=0;i< keywords.length ; i++)
+        {
+             
+            return  card.title.toLocaleLowerCase().includes(keywords[i]);   
+         }
+      
+    });
+    console.log(intersted)
     return (
         <div className="Container" >
             <div className="HomeLinkWrapper">
@@ -67,15 +77,25 @@ function Details({ match }) {
 
                             <div className="Ratio">
                                 <div className="children">
-                                    <div className="ImageCover">
-                                        {
-                                            details.image && (<div className="style-ratio">
+                                {
+                                    details.image ? (
+                                        <div className="style-ratio">
                                                 <img src={BACKEND_URL + details.image.url} className="Img" />
                                             </div>
-                                            )
-                                        }
 
-                                    </div>
+                                    ) :(
+                                        <div className="def">
+                                      
+                                       <img src="/images/default.png" className="Img" />
+                                       <p className="defaultCat">{ details.category ? details.category.name : null}</p>
+                                       <span className="defaultTitle">{details.title}</span>
+                                       </div>
+                                   
+                                    )
+                                    
+                                }
+                                    
+                                    
 
                                 </div>
 
@@ -157,26 +177,13 @@ function Details({ match }) {
                                     . He wrote this blog post through the Write for the Community program. If you are passionate about everything jamstack, open-source or javascript .
                                     </blockquote>
                                         <div dangerouslySetInnerHTML={{ __html: details.content }}></div>
-
-
-
-
-
                                     </div>
                                 </div>
 
                             </div>
                         </div>
                     </div>
-
-
-
-
                 </div>
-
-
-
-
             </section>
             <div className="RelatedArticlesGrid">
                 <div className="MaxWidth">
@@ -197,11 +204,12 @@ function Details({ match }) {
                     <div className="RelatedArticlesWrapper">
                         <div className="InnerCardGrid">
                             <div className="CardGrid">
-                                { cardData.length > 0  && (
-                                    cardData.slice(3, 6).map(article => (
+                                { intersted.length > 0  && (
+
+                                    intersted.slice(0, 3).map(article => (
+
                                         <MiniCard
                                             image={BACKEND_URL + article.image.url}
-
                                             title={article.title}
                                             text={article.text}
                                             name={article.author}

@@ -15,6 +15,9 @@ function Card(props) {
                         <div className="image-cover">
                             <div className="ratio">
                                 <div className="child">
+
+                                  {
+                                   props.image  ? (
                                     <div className="CoverImg">
                                         <div className="CoverRatio">
                                             <img src={props.image} className="Img" />
@@ -22,8 +25,21 @@ function Card(props) {
 
 
                                     </div>
+                                   ):(
+                                       <>
+                                      
+                                       <img src="/images/default.png" className="Img" />
+                                       <p className="defaultCat">{props.tag}</p>
+                                       <span className="defaultTitle">{props.title}</span>
+                                       </>
+                                   )
+
+                                  }
+
+                                    
 
                                 </div>
+
 
 
                             </div>

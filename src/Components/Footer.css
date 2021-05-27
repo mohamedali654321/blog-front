@@ -78,7 +78,7 @@
 
     font-weight: bold;
     line-height: 56px;
-    color: #1d1b84;
+    color: #8425c9;
     text-align: center;
 
 }
@@ -213,8 +213,9 @@
     display: block;
     width: 100%;
     height: 35px;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-left: 6px;
+    position: relative;
     
 
 }
@@ -223,13 +224,13 @@
     font-weight: 600;
     font-size: 13px !important;
     line-height: 18px;
-    color: #4e6294 !important;
+    color: #6b49a5 !important;
     margin-left: auto;
-    margin-top: 40px;
+    
     width: 200px;
-    left: -70px;
-    top: -340px !important;
-    position: relative;
+    margin-left: 10px;
+    margin-top: 65px;
+    position: absolute;
     
    
 }
@@ -266,7 +267,7 @@
     margin-bottom: 30px;
     font-weight:700;
     text-transform: uppercase;
-    color: #1d1b84;
+    color: #6514a0;
    
     
 }
@@ -283,7 +284,7 @@
     grid-template-rows: repeat(1,1fr);
     grid-gap: 20px;
     font-size: 13px;
-    color:#4e6294 ;
+    color:#6b49a5 ;
     margin-top: 10px;
     top: 0;
     font-weight: 700;
@@ -310,7 +311,7 @@
 .legals .subLink{
     font-size: 13px;
     line-height: 19px;
-    color: #4e6294;
+    color: #6b49a5;
     font-weight: 600;
 
 }
@@ -318,7 +319,7 @@
 
 
 .legals .link{
-    color: #4e6294;
+    color: #6b49a5;
     font-size: 13px;
     line-height: 19px;
     margin-right: 0;

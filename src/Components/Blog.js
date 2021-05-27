@@ -2,9 +2,9 @@ import React ,{useState ,useEffect} from 'react'
 import axios from 'axios'
 import Card from './Card'
 import FilterBar from './FilterBar'
-import './Hero.css'
+import './Blog.css'
 import {Link} from 'react-router-dom'
-export default function Hero() {
+export default function Blog() {
 
 const [visible,setVisible]=useState(6);
 const [card,setCard]=useState([]);
@@ -90,7 +90,7 @@ const showMoreItems=()=>{
                                      
                                        <Card
                                             
-                                           image={BACKEND_URL + item.image.url}
+                                           image={item.image ? BACKEND_URL + item.image.url : null}
                                            tag={item.category.name}
                                            title={item.title}
                                            text={item.text}
