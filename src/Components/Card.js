@@ -17,7 +17,7 @@ function Card(props) {
                                 <div className="child">
 
                                   {
-                                   props.image  ? (
+                                   props.image && props.image.url !==null ? (
                                     <div className="CoverImg">
                                         <div className="CoverRatio">
                                             <img src={props.image} className="Img" />

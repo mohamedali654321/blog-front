@@ -204,7 +204,7 @@ function Details({ match }) {
                     <div className="RelatedArticlesWrapper">
                         <div className="InnerCardGrid">
                             <div className="CardGrid">
-                                { intersted.length > 0  && (
+                                { intersted.image && intersted.length > 0 ? (
 
                                     intersted.slice(0, 3).map(article => (
 
@@ -217,7 +217,7 @@ function Details({ match }) {
                                             slug={article.slug}
                                         />
                                     ))
-                                ) 
+                                ) : <p style={{textAlign:"center",position:"relative",padding:"0 auto",alignItems:"center"}}>No result</p>
 
                                 }
 
