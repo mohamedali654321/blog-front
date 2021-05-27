@@ -58,12 +58,23 @@ class Header extends React.Component {
            
 
            </ul>
+
+           <div className="switch-container">
+           <input type="checkbox" id='switch'/>
+          <div className="switch-color"></div>
+  
+           <label for="switch"/>
+      
+
+           </div>
     
-          <div className="ToggleContainer">
+          {/* <div className="ToggleContainer">
           
             <input type="checkbox" className="check" />
             
-          </div>
+          </div> */}
+
+          
 
 
         </div>

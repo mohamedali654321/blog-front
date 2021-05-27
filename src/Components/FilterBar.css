@@ -1,14 +1,27 @@
- .filterBar{
+ /* .filterBar{
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
-    width: 1440px;
+    width: 1200px;
     flex: 1;
 
-}
+} */
 
+
+.filterBar{
+    opacity: 1; 
+    width: 1440px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 0px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+
+}
 
 .filterBar .selectWrapper{
     justify-content: flex-start;
@@ -20,9 +33,7 @@
     position: relative;
     transform: translateZ(1000px);
     z-index: 1;
-    left: 470px;
-    
-    top: -2px;
+   
 }
 
 .selectWrapper .selects{
@@ -187,6 +198,7 @@
     border-radius: 6px;
     
    
+    
 
 }
 

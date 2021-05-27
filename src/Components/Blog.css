@@ -203,9 +203,13 @@ width: 100%;
 
 .articles .tagResault{
     display: flex;
-    align-items: flex-start;
-    margin: 20px 0 50px;
-    width: 1440px;
+    align-items: flex-end;
+    /* margin: 20px -90px 50px; */
+    width: 1030px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
 
 }
 
@@ -267,18 +271,38 @@ width: 100%;
 
 
 
-.articles .buttonContainer{
+/* .articles .buttonContainer{
+    max-width: 1440px;
     text-align: center;
     text-transform: uppercase;
     display: inline-flex;
     align-items: center;
     transform: translateZ(1000px);
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
     
     
     
+
+
+} */
+
+.articles .buttonContainer{
+    opacity: 1; 
+    width: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 0px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
 
 
 }
+
+
 
 .buttonContainer .styles-button{
     background-color: transparent;
@@ -290,8 +314,9 @@ width: 100%;
     
     
     
+    
    
-    left: 880px;
+    
     
 }
 

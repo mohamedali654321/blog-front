@@ -154,9 +154,6 @@ height: 55px;
 
 
 
-
-
-
 @media(max-width:640px){
 .Header{
     padding: 15px 0;
@@ -305,6 +302,7 @@ height: 55px;
     position: relative;
     
     
+    
 }
 
 .HeaderGroup .check:checked{
@@ -374,3 +372,96 @@ height: 55px;
     background-color:#fff ;
     
 }
+
+
+
+
+
+
+
+.switch-container {
+    width: 80px;
+    height: 40px;
+    border-radius: 50px;
+    box-shadow: 2px 2px 2px 2px #cfd8dc;
+    position: relative;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  
+  }
+  
+  .switch-color {
+    width: 70px;
+    height: 30px;
+    left: 5px;
+    top: 5px;
+    background: #cfd8dc;
+    border-radius: 50px;
+    z-index: -1;
+    position: absolute;
+    transition: all 500ms cubic-bezier(0.34, 1.36, 0.2, 1);
+  
+  
+  }
+  
+  label {
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    background: white;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    box-shadow: 2px 2px 2px 2px #ebeef0;
+    z-index: 99;
+    cursor: pointer;
+  }
+  
+  label::before {
+    
+    font-weight: 700;
+    font-size: 14px;
+    content: "AR";
+    position: absolute;
+    left: 4px;
+    top: 6px;
+    color: #6514a0;
+  }
+  
+  label::after {
+   
+    font-weight: 700;
+    font-size: 14px;
+    content: "EN";
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    opacity: 0;
+    color: #6514a0;
+  }
+  
+  #switch:checked ~ label::before {
+    opacity: 0;
+  }
+  
+  #switch:checked ~ label::after {
+    opacity: 1;
+  }
+  
+  #switch:checked ~ label {
+    transform: translatex(2em) rotatez(360deg);
+  }
+  
+  #switch:checked ~ .switch-color {
+    background: #6514a0;
+  }
+  
+  #switch ~ label {
+    transition: all 1s cubic-bezier(0.34, 1.36, 0.2, 1);
+  }
+  
+  input {
+    display: none;
+  }
+  
