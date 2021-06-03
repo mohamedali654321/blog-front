@@ -15,7 +15,7 @@
         padding: 15px 0;
         backdrop-filter: blur(25px);
         justify-items: flex-end;
-        background: #4B0082;
+        background: #530a86;
        
 }
 
@@ -48,6 +48,32 @@
     transition: width .3s;
 }
 
+
+.HomeHeader{
+    opacity: 1;
+        padding: 15px 0;
+        backdrop-filter: blur(25px);
+        justify-items: flex-end;
+        
+}
+
+
+.HomeHeader a{
+    color: white !important;
+}
+
+.HomeHeader a:hover{
+    color: white !important;
+}
+
+.HomeHeader .cool::after{
+    content: '';
+    display: block;
+    width: 0;
+    height: 3px;
+    background: #fff !important;
+    transition: width .3s;
+}
 
 
 
@@ -268,6 +294,7 @@ height: 55px;
 .ToggleContainer{
   position: relative;
   margin-left: 20px;
+  
   font-weight: bold;
   font-size: 18px;
 }
@@ -295,7 +322,7 @@ height: 55px;
     border-radius: 40px;
     margin-right: 20px;
     margin-left: 20px;
-    box-shadow: 2px 2px 5px #ccc;
+    box-shadow: 5px 5px 5px #ccc;
     transition: .4s;
     cursor: pointer;
     border: none;
@@ -320,7 +347,7 @@ height: 55px;
     background-color: #740ac0;
     transform: scale(1.1);
     transition:all .4s ease-in-out;
-    box-shadow: 1px 1px 4px #ccc;
+    box-shadow: 2px 2px 4px #ccc;
 }
 
 .HeaderGroup .check:checked::after{
@@ -357,7 +384,7 @@ height: 55px;
 }
 
 .HeaderScrolled .check{
-    appearance: none;
+    appearance: none ;
     width: 70px;
     height: 33px;
     border: 1px solid #ccc;
@@ -367,7 +394,7 @@ height: 55px;
     box-shadow: 2px 2px 2px #ccc;
     transition: .4s;
     cursor: pointer;
-    border: none;
+    border: 1px solid #ccc;
     position: relative;
     background-color:#fff ;
     
@@ -383,11 +410,13 @@ height: 55px;
     width: 80px;
     height: 40px;
     border-radius: 50px;
-    box-shadow: 2px 2px 2px 2px #cfd8dc;
+    box-shadow: 2px 2px 2px 2px #ccc;
     position: relative;
     display: grid;
     justify-content: center;
     align-items: center;
+    z-index: 1;
+    
   
   }
   
@@ -429,7 +458,7 @@ height: 55px;
     color: #6514a0;
   }
   
-  label::after {
+ label::after {
    
     font-weight: 700;
     font-size: 14px;
@@ -441,11 +470,11 @@ height: 55px;
     color: #6514a0;
   }
   
-  #switch:checked ~ label::before {
+   #switch:checked ~ label::before {
     opacity: 0;
   }
   
-  #switch:checked ~ label::after {
+ #switch:checked ~ label::after {
     opacity: 1;
   }
   
@@ -453,15 +482,15 @@ height: 55px;
     transform: translatex(2em) rotatez(360deg);
   }
   
-  #switch:checked ~ .switch-color {
+ #switch:checked ~ .switch-color {
     background: #6514a0;
   }
   
-  #switch ~ label {
+ #switch ~ label {
     transition: all 1s cubic-bezier(0.34, 1.36, 0.2, 1);
   }
   
-  input {
+   input {
     display: none;
   }
   

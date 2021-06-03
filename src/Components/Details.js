@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import NewsLetterBanner from './NewsLetterBanner';
 import MiniCard from './MiniCard';
-import Card from './Card'
+import {FacebookShareButton} from 'react-share'
 
 function Details({ match }) {
     const slug = match.params.slug;
@@ -13,6 +13,12 @@ function Details({ match }) {
     const [title,setTitle]=useState('');
     const BACKEND_URL = "http://54.220.211.123:1334";
     const endPoint = `http://54.220.211.123:1334/articles/${slug}`;
+    const postUrl= encodeURI(endPoint);
+    console.log(postUrl)
+    const facebookURL= `https://www.facebook.com/sharer.php?u=${postUrl}`
+    
+    
+    
     
    
 
@@ -79,7 +85,7 @@ function Details({ match }) {
     return (
         <div className="Container" >
             <div className="HomeLinkWrapper">
-                <Link to="/" className="home-link"><span className="HomeLinkContainer">
+                <Link to="/blog" className="home-link"><span className="HomeLinkContainer">
                     <span className="label">Back to articles</span>
                     <svg className="SmallArrow" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M5 9.4l3.2-3.8L5 1.8a1 1 0 01-.2-.7c0-.3 0-.6.2-.7.4-.4.9-.4 1.2 0L10 4.9c.3.4.3 1 0 1.4L6 10.8c-.3.4-.8.4-1.2 0-.3-.4-.3-1 0-1.4z" fill="#8c4bff">
@@ -129,19 +135,21 @@ function Details({ match }) {
                             <div className="ShareContainer">
                                 <ul className="share">
                                     <li className="socialMedia">
-                                        <Link to="/" className="Button" style={{ color: "#4e6294" }}>
+                                        
+                                        <Link to={facebookURL}   className="Button" style={{ color: "#4e6294" }}>
+                                                               
                                             <div className="Icon">
                                                 <i className="fab fa-facebook-f"></i>
                                             </div>
 
                                         </Link>
-
+                                        
                                     </li>
 
                                     <li className="socialMedia">
                                         <Link to="/" className="Button" style={{ color: "#4e6294" }}>
                                             <div className="Icon">
-                                                <i className="fab fa-twitter"></i>
+                                                <i className="fab fa-twitter" ></i>
                                             </div>
 
                                         </Link>
@@ -168,6 +176,15 @@ function Details({ match }) {
                                         <Link to="/" className="Button" style={{ color: "#4e6294" }}>
                                             <div className="Icon">
                                                 <i className="far fa-envelope"></i>
+                                            </div>
+
+                                        </Link>
+                                    </li>
+
+                                    <li className="socialMedia">
+                                        <Link to="/" className="Button" style={{ color: "#4e6294" }}>
+                                            <div className="Icon">
+                                                <i className="fab fa-tiktok"></i>
                                             </div>
 
                                         </Link>

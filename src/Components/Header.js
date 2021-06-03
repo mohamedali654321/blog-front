@@ -35,7 +35,7 @@ class Header extends React.Component {
     return (
       <div className={this.state.hasScroll ? 'Header HeaderScrolled' : 'Header'}>
         <div className="HeaderGroup">
-          <a href="/"><img src="/images/strapi-logo-dark.svg" src={this.state.hasScroll ? '/images/strapi-logo-light.svg' : '/images/strapi-logo-dark.svg'} className="logo" /></a>
+          <a href="/"><img src="/images/strapi-logo-dark.svg" src={this.state.hasScroll || document.location.pathname.length === 1  ? '/images/strapi-logo-light.svg' : '/images/strapi-logo-dark.svg'} className="logo" /></a>
           
            <div className="panelBackgroundWrapper">
               <div className="panelBackgroundContainer">
@@ -47,14 +47,14 @@ class Header extends React.Component {
            </div>
 
            <ul className="links">
-           <li className="NavigationLabel">
+           <li className={document.location.pathname.length === 1  ? 'HomeHeader NavigationLabel ' : 'NavigationLabel'}>
            <Link to="/our-clients" className="cool">عملاؤنا</Link> </li>          
-           <li className="NavigationLabel"><Link to="/our-partners" className="cool">شركاؤنا</Link></li>
-           <li className="NavigationLabel"><Link to="/services" className="cool">خدماتنا </Link></li>
-           <li className="NavigationLabel"><Link to="/forum" className="cool">المنتدي </Link></li>
-           <li className="NavigationLabel"><Link to="/blog" className="cool">المدونه</Link></li>
-           <li className="NavigationLabel"><Link to="/sys-solutions" className="cool">نظم وحلول</Link></li>
-           <li className="NavigationLabel"><Link to="/" className="cool">الرئيسية</Link></li>
+           <li className= {document.location.pathname.length === 1  ? 'HomeHeader NavigationLabel ' : 'NavigationLabel'}  ><a href="/our-partners" className="cool">شركاؤنا</a></li>
+           <li className={document.location.pathname.length === 1  ? 'HomeHeader NavigationLabel ' : 'NavigationLabel'}><a href="/services" className="cool">خدماتنا </a></li>
+           <li className={document.location.pathname.length === 1  ? 'HomeHeader NavigationLabel ' : 'NavigationLabel'}><a href="/products" className="cool">منتجاتنا </a></li>
+           <li className={document.location.pathname.length === 1  ? 'HomeHeader NavigationLabel ' : 'NavigationLabel'}><a href="/blog" className="cool">المدونه</a></li>
+           <li className={document.location.pathname.length === 1  ? 'HomeHeader NavigationLabel ' : 'NavigationLabel'}><a href="/sys-solutions" className="cool">نظم وحلول</a></li>
+           <li className={document.location.pathname.length === 1  ? 'HomeHeader NavigationLabel ' : 'NavigationLabel'}><a href="/" className="cool">الرئيسية</a></li>
            
 
            </ul>

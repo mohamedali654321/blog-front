@@ -6,14 +6,14 @@ import './Blog.css'
 import {Link} from 'react-router-dom'
 export default function Blog() {
 
-const [visible,setVisible]=useState(6);
+const [visible,setVisible]=useState(12);
 const [card,setCard]=useState([]);
 const BACKEND_URL="http://54.220.211.123:1334"
 const endPoint="http://54.220.211.123:1334/articles"
 
 const showMoreItems=()=>{
     setVisible(prevValue =>
-        prevValue + 3 
+        prevValue + 12
         
         );
       
