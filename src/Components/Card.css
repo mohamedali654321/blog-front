@@ -5,6 +5,7 @@
     transform: translateZ(1000px);
     width: 100%;
     z-index: 1;
+    height: 100%;
 
 }
 
@@ -216,16 +217,18 @@ flex: 1 1;
 }
 
 .listCardContent h2{
+    position: relative;
     margin-bottom: 12px;
     font-weight: 600;
     color: #740ac0;
     font-size: 17px;
     line-height: 1.5;
-    width: 300px;
+    /* width: 300px; */
 }
 
 .listCardContent p{
     display: -webkit-box;
+    position: relative;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -233,7 +236,7 @@ flex: 1 1;
     font-weight: 500;
     line-height: 22px;
     color: #4e6294;
-    width: 300px;
+    /* width: 300px; */
     
 }
 
@@ -282,4 +285,50 @@ flex: 1 1;
     margin-left: 20px;
     margin-right: 20px;
     filter: blur(.4px);
+}
+
+.voting{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px ;
+   
+    margin-left: 10%;
+    margin-right: 10%;
+    bottom: 0;
+    overflow: hidden;
+    
+     
+     
+
+   
+}
+
+.likeCount{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #8d38ca;
+   text-align: center;
+    padding: 5px;
+    color: #fff;
+    font-size: 13px;
+   
+   
+}
+
+.voting button{
+
+    background: none;
+    border: none;
+    color: #740ac0 ;
+    font-size: 19px;
+    padding: 0 15px;
+    cursor: pointer;
+
+}
+
+.voting button:active{
+    transform: scale(1.1);
 }

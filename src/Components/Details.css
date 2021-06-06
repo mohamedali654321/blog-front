@@ -194,7 +194,7 @@
     display: block;
     position: sticky;
     top: 100px;
-    padding-bottom: 450px;
+    padding-bottom: 600px;
     flex-direction: column;
     list-style: none;
     
@@ -508,4 +508,62 @@ color: #5813cf;
   margin-right: 20px;
   filter: blur(.6px);
   margin-top: -10px;
+}
+
+
+.SourceInnerContentContainer{
+  width: 81.6666666667%;
+    max-width: 980px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+
+}
+
+.SourceContent{
+
+  padding: 20px ;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 1px 4px 0 rgb(117 141 166 / 21%);
+}
+
+
+.SourceContent .sourceLabel{
+  margin-bottom: 10px;
+   text-align: left;
+    transform: translateZ(1000px);
+    font-size: 17px;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    font-family: Poppins,serif;
+    color: #662dc9;;
+}
+
+.SourceContent .sourceLinks {
+color: #9961b3;
+line-height: 1;
+font-size: 15px;
+letter-spacing: 1px;
+    font-weight: 600;
+    font-family: Poppins,serif;
+    transition: 1s cubic-bezier(0.2, 0.82, 0.2, 1);
+  
+
+}
+.SourceContent .sourceLinks:hover{
+  color: #480fac;
+  letter-spacing: 2px;
+  
+}
+.separator2{
+  margin: 12px 0 20px;
+  width: 13%;
+  position: relative;
+  box-sizing: border-box;
+  height: 3px;
+  background-color: #fee895;
 }

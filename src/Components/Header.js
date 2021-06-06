@@ -48,7 +48,7 @@ class Header extends React.Component {
 
            <ul className="links">
            <li className={document.location.pathname.length === 1  ? 'HomeHeader NavigationLabel ' : 'NavigationLabel'}>
-           <Link to="/our-clients" className="cool">عملاؤنا</Link> </li>          
+           <a href="/our-clients" className="cool">عملاؤنا</a> </li>          
            <li className= {document.location.pathname.length === 1  ? 'HomeHeader NavigationLabel ' : 'NavigationLabel'}  ><a href="/our-partners" className="cool">شركاؤنا</a></li>
            <li className={document.location.pathname.length === 1  ? 'HomeHeader NavigationLabel ' : 'NavigationLabel'}><a href="/services" className="cool">خدماتنا </a></li>
            <li className={document.location.pathname.length === 1  ? 'HomeHeader NavigationLabel ' : 'NavigationLabel'}><a href="/products" className="cool">منتجاتنا </a></li>

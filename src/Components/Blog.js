@@ -9,11 +9,11 @@ export default function Blog() {
 const [visible,setVisible]=useState(12);
 const [card,setCard]=useState([]);
 const BACKEND_URL="http://54.220.211.123:1334"
-const endPoint="http://54.220.211.123:1334/articles"
+const endPoint="http://54.220.211.123:1334/articles?_sort=date:desc"
 
 const showMoreItems=()=>{
     setVisible(prevValue =>
-        prevValue + 12
+        prevValue + 6
         
         );
       
@@ -28,7 +28,9 @@ const showMoreItems=()=>{
 
 })
 .catch(err=>console.log(err))
-},[])
+},[]);
+
+console.log(card)
 
     return (
         <div className="container" >

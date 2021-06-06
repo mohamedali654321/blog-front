@@ -7,9 +7,9 @@ function Newsletter() {
             <div className="wrapper">
                 <div className="gradient1"></div>
                 <div className="gradient2"></div>
-                <div className="content">
-                    <h3 className="title">Newsletter</h3>
-                    <p className="text">Sign up for the Strapi newsletter to keep up with the latest news from the Strapi community! </p>
+                <div className="contentNews">
+                    <h3 className="titleNews" >Newsletter</h3>
+                    <p style={{fontSize:"17px"}} className="descNews" >Sign up for the Strapi newsletter to keep up with the latest news from the Strapi community! </p>
                 </div>
                 <form className="form-styles">
                     <input className="input-styles" type="email" name="email" placeholder="Email" aria-label="Email" />
@@ -19,6 +19,7 @@ function Newsletter() {
                             <div className="hoverCircle"></div>
                         </div>
                         <input className="buttonLink" name="submit" value="Submit" type="submit" />
+                        
 
                     </div>
                     <div className="decoration">

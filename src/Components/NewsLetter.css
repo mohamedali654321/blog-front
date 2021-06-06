@@ -65,15 +65,15 @@
 
 }
 
-.banner .wrapper .content{
+.banner .wrapper .contentNews{
     width: 50%;
     margin-bottom: 0;
     padding-right: 100px;
     box-sizing: border-box;
-
+     color: #fff;
 }
 
-.content .title{
+.contentNews .titleNews{
     font-size: 21px;
     font-weight: 600;
     line-height: 30px;
@@ -81,8 +81,8 @@
     color: #fff;
 }
 
-.content .text{
-    font-size: 15px;
+.content .descNews{
+    font-size: 10px;
     color: #fff;
     line-height: 22px;
 }

@@ -4,23 +4,23 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import NewsLetterBanner from './NewsLetterBanner';
 import MiniCard from './MiniCard';
-import {FacebookShareButton} from 'react-share'
+import { FacebookShareButton } from 'react-share'
 
 function Details({ match }) {
     const slug = match.params.slug;
     const [details, SetDetails] = useState([]);
     const [cardData, setCardData] = useState([]);
-    const [title,setTitle]=useState('');
+    const [title, setTitle] = useState('');
     const BACKEND_URL = "http://54.220.211.123:1334";
     const endPoint = `http://54.220.211.123:1334/articles/${slug}`;
-    const postUrl= encodeURI(endPoint);
+    const postUrl = encodeURI(endPoint);
     console.log(postUrl)
-    const facebookURL= `https://www.facebook.com/sharer.php?u=${postUrl}`
-    
-    
-    
-    
-   
+    const facebookURL = `https://www.facebook.com/sharer.php?u=${postUrl}`
+
+
+
+
+
 
     useEffect(() => {
         axios.get(endPoint)
@@ -29,59 +29,56 @@ function Details({ match }) {
                 await SetDetails(res.data);
                 await setTitle(res.data.title)
 
-                
+
             })
             .catch(err => console.log(err))
     }, [details]);
 
-    let keywords=[];
-    if(details.keywords){
-        details.keywords.map(item=>{
+    let keywords = [];
+    if (details.keywords) {
+        details.keywords.map(item => {
 
             keywords.push(item.word.toLocaleLowerCase())
         });
-        
+
     }
 
-    
- 
+
+
     useEffect(() => {
         axios.get('http://54.220.211.123:1334/articles')
             .then(async res => {
-               
+
                 await setCardData(res.data);
             })
             .catch(err => console.log(err))
     }, []);
 
-    
 
-   
-     let intersted= cardData.filter(card=>{
-         if(keywords.length > 0){
-            for(let i=0;i< keywords.length ; i++)
-            {
-                 
-                return  card.title.toLocaleLowerCase().includes(keywords[i]);   
-             }
 
-         }
-         else{
-            return  card.title.toLocaleLowerCase().includes("strapi");
-         }
-       
-      
+
+    let intersted = cardData.filter(card => {
+        if (keywords.length > 0) {
+            for (let i = 0; i < keywords.length; i++) {
+
+                return card.title.toLocaleLowerCase().includes(keywords[i]);
+            }
+
+        }
+        else {
+            return card.title.toLocaleLowerCase().includes("strapi");
+        }
+
+
     });
 
-    for(let i=0; i<intersted.length;i++)
-    {
-        if(title === intersted[i].title)
-         {
-             intersted.splice(i,1);
-         }
+    for (let i = 0; i < intersted.length; i++) {
+        if (title === intersted[i].title) {
+            intersted.splice(i, 1);
+        }
 
     }
-    
+
     return (
         <div className="Container" >
             <div className="HomeLinkWrapper">
@@ -104,25 +101,25 @@ function Details({ match }) {
 
                             <div className="Ratio">
                                 <div className="children">
-                                {
-                                    details.image ? (
-                                        <div className="style-ratio">
+                                    {
+                                        details.image ? (
+                                            <div className="style-ratio">
                                                 <img src={BACKEND_URL + details.image.url} className="Img" />
                                             </div>
 
-                                    ) :(
-                                        <div className="def">
-                                      
-                                       <img src="/images/default.png" className="Img" />
-                                       <p className="defaultCat">{ details.category ? details.category.name : null}</p>
-                                       <span className="defaultTitle">{details.title}</span>
-                                       </div>
-                                   
-                                    )
-                                    
-                                }
-                                    
-                                    
+                                        ) : (
+                                            <div className="def">
+
+                                                <img src="/images/default.png" className="Img" />
+                                                <p className="defaultCat">{details.category ? details.category.name : null}</p>
+                                                <span className="defaultTitle">{details.title}</span>
+                                            </div>
+
+                                        )
+
+                                    }
+
+
 
                                 </div>
 
@@ -135,15 +132,15 @@ function Details({ match }) {
                             <div className="ShareContainer">
                                 <ul className="share">
                                     <li className="socialMedia">
-                                        
-                                        <Link to={facebookURL}   className="Button" style={{ color: "#4e6294" }}>
-                                                               
+
+                                        <Link to={facebookURL} className="Button" style={{ color: "#4e6294" }}>
+
                                             <div className="Icon">
                                                 <i className="fab fa-facebook-f"></i>
                                             </div>
 
                                         </Link>
-                                        
+
                                     </li>
 
                                     <li className="socialMedia">
@@ -212,13 +209,34 @@ function Details({ match }) {
                                     <div className="details">
                                         <blockquote>
                                             This article is a guest post by <Link to="/" className="nameAuth">{details.author}</Link>
-                                    . He wrote this blog post through the Write for the Community program. If you are passionate about everything jamstack, open-source or javascript .
-                                    </blockquote>
+                                     . He wrote this blog post through the Write for the Community program. If you are passionate about everything jamstack, open-source or javascript .
+                                     </blockquote>
                                         <div dangerouslySetInnerHTML={{ __html: details.content }}></div>
+
+
                                     </div>
                                 </div>
 
                             </div>
+                            {
+                               details.sources && details.sources.length > 0 ?  ( 
+                                   <div className="SourceInnerContentContainer" >
+                                    <div className="SourceContent">
+                                    <div className="sourceLabel">Sources: </div>
+                                    <div className="separator2"></div>
+                                      {details.sources.map(source=>(
+                                          <div className="">
+                                          <a href={source.url} className="sourceLinks">{source.name}</a>
+                                          </div>
+
+                                          
+                                      ))
+                                      }
+                                     </div>
+
+                            </div>)     : null
+                            }
+                           
                         </div>
                     </div>
                 </div>
@@ -242,7 +260,7 @@ function Details({ match }) {
                     <div className="RelatedArticlesWrapper">
                         <div className="InnerCardGrid">
                             <div className="CardGrid">
-                                { intersted && intersted.length > 0  && (
+                                {intersted && intersted.length > 0 && (
 
                                     intersted.slice(0, 3).map(article => (
 
@@ -255,7 +273,7 @@ function Details({ match }) {
                                             slug={article.slug}
                                         />
                                     ))
-                                ) 
+                                )
 
                                 }
 

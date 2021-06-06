@@ -68,3 +68,47 @@
     z-index: 10;
     width: 100%;
  }
+
+ .typography_Label{
+   margin-bottom: 40px;
+   text-align: left;
+    transform: translateZ(1000px);
+    font-size: 13px;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    font-family: Poppins,serif;
+    color: #8c4bff;
+ }
+
+ .typography_Label .featureLabel{
+   position: relative;
+   display: inline-block;
+   opacity: 1;
+   transform: perspective(1000px) translate3d(0px, 0px, 0px);
+   will-change: opacity,transform;
+ }
+
+ .typography_Title{
+   font-size: 53px;
+   position: relative;
+    margin-bottom: 35px;
+    text-align: left;
+    transform: translateZ(1000px);
+    font-weight: 900;
+    line-height: 56px;
+    font-family: Poppins,serif;
+    color: #480fac;
+    position: relative;
+
+ }
+
+ .typography_Title .typography_TitleContainer{
+   position: relative;
+   display: inline-block;
+   opacity: 1;
+   transform: perspective(1000px) translate3d(0px, 0px, 0px);
+   will-change: opacity,transform;
+   text-align: left;
+ }
