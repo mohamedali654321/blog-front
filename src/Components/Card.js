@@ -54,12 +54,16 @@ function Card(props) {
                             <p>{props.text}</p>
                             <div className="author">
                                 <p className="name">Author: {props.name}</p>
-
-                                <p className="date">{props.date}</p>
+                                {
+                                    props.translator ? (
+                                        <p className="translate">Translated by: {props.translator}</p>
+                                    ) :null
+                                }
+                                <p className="date">Publish Date: {props.date}</p>
 
 
                             </div>
-                            <div className="voting">
+                            {/* <div className="voting">
 
                                 <div>
                                 <button className="like">
@@ -84,7 +88,7 @@ function Card(props) {
                                
 
                                 
-                            </div>
+                            </div> */}
 
                         </div>
 

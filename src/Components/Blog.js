@@ -99,6 +99,7 @@ console.log(card)
                                            name={item.author}
                                            date={item.date}
                                            slug={item.slug}
+                                           translator={item.translator ? item.translator : null}
                                        />
                                    ))
 

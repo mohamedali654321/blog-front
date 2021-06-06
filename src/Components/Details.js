@@ -200,8 +200,9 @@ function Details({ match }) {
                                             </div>
                                         </div>
                                         <div >
-                                            <p className="auth">{details.author}</p>
-                                            <p className="date">{details.date}</p>
+                                            <p className="auth"> Author: {details.author}</p>
+                                            <p className="translate">Translated by: {details.translator}</p>
+                                            <p className="date">Published Date: {details.date}</p>
                                         </div>
 
                                     </div>

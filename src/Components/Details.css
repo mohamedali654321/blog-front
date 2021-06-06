@@ -143,7 +143,7 @@
     height: 100%;
     overflow: hidden;
     display: block;
-    height: 100%;
+    
     
 }
 .children .ImageCover .style-ratio{
@@ -332,6 +332,13 @@
     line-height: 22px;
     font-weight: 400;
     color: #8c4bff;
+  }
+  .Author .translate{
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 400;
+    color: #8c4bff;
+    margin-top: -10px;
   }
 
   .Author .date{

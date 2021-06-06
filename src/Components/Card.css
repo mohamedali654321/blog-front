@@ -261,8 +261,15 @@ flex: 1 1;
     margin-top: -10px;
     font-size: 11px;
     line-height: 18px;
-    color: #4e6294;
+    color: #683d86;
 
+}
+
+.listCardContent .author .translate{
+    margin-top: -10px;
+    font-size: 13px;
+    line-height: 19px;
+    color: #740ac0;
 }
 
 .defaultCat{
