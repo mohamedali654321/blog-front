@@ -339,3 +339,66 @@ flex: 1 1;
 .voting button:active{
     transform: scale(1.1);
 }
+
+.CourseCard{
+
+    position: relative;
+    width: 74px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 10px;
+    margin: 10px auto 0px auto;
+    left: -20px;
+
+}
+
+
+.CourseCard .likeButton{
+    width: 32px;
+    height: 32px;
+    background: rgba(191, 101, 233, 0.2);
+    border-radius: 30px;
+    padding: 4px;
+    cursor: pointer;
+    border: none;
+   margin-bottom: 10px;
+   transition: all 0.8s cubic-bezier(0.2, 0.82, 0.2, 1) ;
+}
+
+.CourseCard .likeButton:hover{
+    transform: scale(1.2);
+}
+
+.CourseCard .likeButton img{
+    margin: auto;
+    max-width: 100%;
+    padding: 3px;
+    border-style: none;
+}
+
+
+.CourseCard .dislikeButton{
+    width: 32px;
+    height: 32px;
+    background: rgba(191, 101, 233, 0.2);
+    border-radius: 30px;
+    padding: 4px;
+    cursor: pointer;
+    border: none;
+   margin-bottom: 10px;
+   transition: all 0.8s cubic-bezier(0.2, 0.82, 0.2, 1) ;
+}
+
+.CourseCard .dislikeButton:hover{
+    transform: scale(1.2);
+}
+
+
+.CourseCard .dislikeButton img{
+    margin: auto;
+    max-width: 100%;
+    padding: 3px;
+    border-style: none;
+    transform: rotate(-180deg);
+    
+}

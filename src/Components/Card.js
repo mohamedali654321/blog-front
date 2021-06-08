@@ -51,7 +51,7 @@ function Card(props) {
                         <div className="listCardContent">
                             <div className="tags"><span className="Tag"><span>{props.tag}</span></span></div>
                             <h2 >{props.title}</h2>
-                            <p>{props.text}</p>
+                            <p style={{marginTop:"-2px"}} dangerouslySetInnerHTML={{ __html: props.text }}></p>
                             <div className="author">
                                 <p className="name">Author: {props.name}</p>
                                 {
@@ -89,6 +89,18 @@ function Card(props) {
 
                                 
                             </div> */}
+
+                            <div className="CourseCard">
+                            <div className="likeButton">
+                                <img src="/images/like.svg"/>
+                            </div>
+
+                            <div className="dislikeButton">
+                                <img src="/images/like.svg"/>
+                            </div>
+
+
+                            </div>
 
                         </div>
 

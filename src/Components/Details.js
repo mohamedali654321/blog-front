@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import NewsLetterBanner from './NewsLetterBanner';
 import MiniCard from './MiniCard';
-import { FacebookShareButton } from 'react-share'
+
 
 function Details({ match }) {
     const slug = match.params.slug;
@@ -212,8 +212,28 @@ function Details({ match }) {
                                             This article is a guest post by <Link to="/" className="nameAuth">{details.author}</Link>
                                      . He wrote this blog post through the Write for the Community program. If you are passionate about everything jamstack, open-source or javascript .
                                      </blockquote>
-                                        <div dangerouslySetInnerHTML={{ __html: details.content }}></div>
+                                        <div className="ContentDetails" dangerouslySetInnerHTML={{ __html: details.content }}/>
+                                        <div className="separator3"></div>
+                                        {/* <span className="bar">
+                                            <span className="jquery"></span>
+                                        </span> */}
+                                        {
+                                            details.category ? (
+                                                <div className="CateLabel">Category:  <span>{details.category.name}</span></div>
+                                            ): null
+                                        }
 
+                                        {
+                                            details.channel ?(
+                                                <div className="CateLabel">Channel:  <span>{details.channel.name}</span></div>
+                                            ) :null
+                                        }
+                                        {
+                                            details.issue ? (
+                                                <div className="CateLabel">Issue:  <span>{details.issue.name}</span></div>
+                                            ):null
+                                        }
+                            
 
                                     </div>
                                 </div>

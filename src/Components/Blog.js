@@ -1,44 +1,67 @@
-import React ,{useState ,useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
+
 import axios from 'axios'
 import Card from './Card'
 import FilterBar from './FilterBar'
 import './Blog.css'
-import {Link} from 'react-router-dom'
+import { Link, useHistory, useLocation } from 'react-router-dom'
 export default function Blog() {
+    
+    const query = new URLSearchParams(useLocation().search);
+    const [visible, setVisible] = useState(12);
+    const [card, setCard] = useState([]);
+    const [locale, setLocale] = useState("en");
+    const history = useHistory();
+    const BACKEND_URL = "http://54.220.211.123:1334"
+    const endPoint = "http://54.220.211.123:1335/articles?_sort=date:desc&_locale=" + locale
 
-const [visible,setVisible]=useState(12);
-const [card,setCard]=useState([]);
-const BACKEND_URL="http://54.220.211.123:1334"
-const endPoint="http://54.220.211.123:1334/articles?_sort=date:desc"
+    const showMoreItems = () => {
+        setVisible(prevValue =>
+            prevValue + 6
 
-const showMoreItems=()=>{
-    setVisible(prevValue =>
-        prevValue + 6
-        
         );
-      
-}
+
+    }
 
 
-  useEffect(()=>{
-     axios.get(endPoint).
-       then( async res=>{
-       await setCard(res.data);
-        console.log(res.data)
+    useEffect(() => {
+        axios.get("http://54.220.211.123:1334/articles?_sort=date:desc").
+            then(async res => {
+                await setCard(res.data);
+                console.log(res.data)
 
-})
-.catch(err=>console.log(err))
-},[]);
+            })
+            .catch(err => console.log(err))
+    }, []);
 
-console.log(card)
+
+
+
+
+
+    // function setLang() {
+    //     setLocale(window.locales.value);
+    //     history.push("/blog?_locale=" + window.locales.value);
+    // }
 
     return (
         <div className="container" >
             <div className="maxWidth">
+        
 
                 <div className="wrapper">
                     <div className="innerWrapper">
+                    {/* <select
+                                name="locales"
+                                id="locales"
+                                onChange={setLang}
+                                value={locale}
+                            >
+                                <option  value="en">English</option>
+                                <option value="ar">Arabic</option>
+                            </select> */}
                         <div className="title">
+                           
                             <h1 className="label">
                                 <span className="text" >Blog</span>
 
@@ -47,6 +70,8 @@ console.log(card)
                         </div>
 
                     </div>
+
+                    
 
                 </div>
                 <div className="triangle">
@@ -78,33 +103,33 @@ console.log(card)
                             <FilterBar />
                             <div className="tagResault">
                                 <div className="tagsWrapper"></div>
-                                <p className="text">Showing {visible <= card.length ? visible: card.length} of {card.length} Blog Posts</p>
+                                <p className="text">Showing {visible <= card.length ? visible : card.length} of {card.length} Blog Posts</p>
 
                             </div>
 
-                            
-                            
+
+
                             <div className="cardsGrid">
 
 
-                               {
-                                   card.slice(0,visible).map(item=>(
-                                     
-                                       <Card
-                                            
-                                           image={item.image ? BACKEND_URL + item.image.url : null}
-                                           tag={item.category.name}
-                                           title={item.title}
-                                           text={item.text}
-                                           name={item.author}
-                                           date={item.date}
-                                           slug={item.slug}
-                                           translator={item.translator ? item.translator : null}
-                                       />
-                                   ))
+                                {
+                                    card.slice(0, visible).map(item => (
 
-                               }
-                                
+                                        <Card
+
+                                            image={item.image ? BACKEND_URL + item.image.url : null}
+                                            tag={item.category.name}
+                                            title={item.title}
+                                            text={item.text}
+                                            name={item.author}
+                                            date={item.date}
+                                            slug={item.slug}
+                                            translator={item.translator ? item.translator : null}
+                                        />
+                                    ))
+
+                                }
+
 
                             </div>
                             <div className="buttonContainer" >
