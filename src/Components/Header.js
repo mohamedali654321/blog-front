@@ -60,7 +60,7 @@ class Header extends React.Component {
            </ul>
 
            <div className="switch-container">
-           <input type="checkbox" id='switch'/>
+           <input type="checkbox" id='switch' />
           <div className="switch-color"></div>
   
            <label for="switch"/>

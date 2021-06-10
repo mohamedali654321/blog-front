@@ -371,7 +371,7 @@
  .Content  .details{
     font-size: 17px;
     font-weight: 400;
-    line-height: 28px;
+    line-height: 22px;
     color: #765486;
     word-spacing: 2px;
 
@@ -580,6 +580,7 @@ letter-spacing: 1px;
 .ContentDetails{
   width: 100%;
   position: relative;
+  overflow: hidden;
 }
 
 .ContentDetails img{

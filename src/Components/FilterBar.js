@@ -4,7 +4,7 @@ import './FilterBar.css'
 
 function FilterBar() {
      const [categories,setCategories]=useState([]);
-     const endPoint='http://54.220.211.123:1334/categories'
+     const endPoint='http://54.220.211.123:1335/categories'
     
     const [show,setShow]=useState(false);
     const showCategory =()=>{

@@ -10,10 +10,10 @@ export default function Blog() {
     const query = new URLSearchParams(useLocation().search);
     const [visible, setVisible] = useState(12);
     const [card, setCard] = useState([]);
-    const [locale, setLocale] = useState("en");
+    const [locale, setLocale] = useState("");
     const history = useHistory();
-    const BACKEND_URL = "http://54.220.211.123:1334"
-    const endPoint = "http://54.220.211.123:1335/articles?_sort=date:desc&_locale=" + locale
+    const BACKEND_URL = "http://54.220.211.123:1335"
+    const endPoint = "http://54.220.211.123:1335/articles?_sort=date:desc" 
 
     const showMoreItems = () => {
         setVisible(prevValue =>
@@ -25,7 +25,7 @@ export default function Blog() {
 
 
     useEffect(() => {
-        axios.get("http://54.220.211.123:1334/articles?_sort=date:desc").
+        axios.get("http://54.220.211.123:1335/articles?_sort=publishDate:desc").
             then(async res => {
                 await setCard(res.data);
                 console.log(res.data)
@@ -35,14 +35,14 @@ export default function Blog() {
     }, []);
 
 
+console.log({card})
 
 
 
-
-    // function setLang() {
-    //     setLocale(window.locales.value);
-    //     history.push("/blog?_locale=" + window.locales.value);
-    // }
+    function setLang() {
+        setLocale(window.locales.value);
+        history.push("/blog?_locale=" + window.locales.value);
+    }
 
     return (
         <div className="container" >
@@ -118,11 +118,11 @@ export default function Blog() {
                                         <Card
 
                                             image={item.image ? BACKEND_URL + item.image.url : null}
-                                            tag={item.category.name}
+                                             tag={item.categories.length >= 0 ? item.categories :null}
                                             title={item.title}
-                                            text={item.text}
+                                            abstract={item.abstract}
                                             name={item.author}
-                                            date={item.date}
+                                            publishDate={item.publishDate}
                                             slug={item.slug}
                                             translator={item.translator ? item.translator : null}
                                         />

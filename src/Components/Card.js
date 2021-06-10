@@ -11,16 +11,17 @@ function Card(props) {
                     <div className="background"></div>
                 </div>
                 <div className="card-content">
-                    <div href="" className="imageCoverContainer">
-                        <div className="image-cover">
-                            <div className="ratio">
-                                <div className="child">
+                    <div href="" className="imageCoverContainerH">
+                        <div className="image-coverH">
+                            <div className="ratioH">
+                                <div className="childH">
 
                                     {
                                         props.image && props.image.url !== null ? (
-                                            <div className="CoverImg">
-                                                <div className="CoverRatio">
-                                                    <img src={props.image} className="Img" />
+                                            <div className="CoverImgH">
+                                                <div className="CoverRatioH">
+                                                    <img src={props.image} className="ImgH" />
+                                                    {/* <div className="ImgH" dangerouslySetInnerHTML={{ __html: props.image }}></div> */}
                                                 </div>
 
 
@@ -49,17 +50,28 @@ function Card(props) {
                     </div>
                     <div className="content">
                         <div className="listCardContent">
-                            <div className="tags"><span className="Tag"><span>{props.tag}</span></span></div>
+                            <ul className="styles_tags">
+
+                                {
+                                    props.tag && (
+                                        props.tag.map(tag => (
+
+                                            <li className="style_tag"><span className="Tag">{tag.name}</span></li>
+                                        ))
+                                    )
+                                }
+                            </ul>
+                            {/* <div className="tags"><span className="Tag"><span>{props.tag}</span></span></div> */}
                             <h2 >{props.title}</h2>
-                            <p style={{marginTop:"-2px"}} dangerouslySetInnerHTML={{ __html: props.text }}></p>
+                            <p >{props.abstract }</p>
                             <div className="author">
                                 <p className="name">Author: {props.name}</p>
                                 {
                                     props.translator ? (
                                         <p className="translate">Translated by: {props.translator}</p>
-                                    ) :null
+                                    ) : null
                                 }
-                                <p className="date">Publish Date: {props.date}</p>
+                                <p className="date">Publish Date: {props.publishDate}</p>
 
 
                             </div>
@@ -91,13 +103,13 @@ function Card(props) {
                             </div> */}
 
                             <div className="CourseCard">
-                            <div className="likeButton">
-                                <img src="/images/like.svg"/>
-                            </div>
+                                <div className="likeButton">
+                                    <img src="/images/like.svg" />
+                                </div>
 
-                            <div className="dislikeButton">
-                                <img src="/images/like.svg"/>
-                            </div>
+                                <div className="dislikeButton">
+                                    <img src="/images/like.svg" />
+                                </div>
 
 
                             </div>

@@ -9,21 +9,35 @@ import MiniCard from './MiniCard';
 function Details({ match }) {
     const slug = match.params.slug;
     const [details, SetDetails] = useState([]);
+    const [identify,setIdentify]=useState("");
     const [cardData, setCardData] = useState([]);
     const [title, setTitle] = useState('');
-    const BACKEND_URL = "http://54.220.211.123:1334";
-    const endPoint = `http://54.220.211.123:1334/articles/${slug}`;
+    const BACKEND_URL = "http://54.220.211.123:1335";
+    const endPoint = `http://54.220.211.123:1334/articles?id=${identify}`;
     const postUrl = encodeURI(endPoint);
     console.log(postUrl)
     const facebookURL = `https://www.facebook.com/sharer.php?u=${postUrl}`
 
+    useEffect(() => {
+        axios.get(`http://54.220.211.123:1334/articles/${slug}`)
+            .then( res => {
+
+                 setIdentify(res.data.id);
+                
+
+
+            })
+            .catch(err => console.log(err))
+    }, []);
+     
+    console.log(identify)
 
 
 
 
 
     useEffect(() => {
-        axios.get(endPoint)
+        axios.get(`http://54.220.211.123:1335/articles/${slug}`)
             .then(async res => {
 
                 await SetDetails(res.data);
@@ -32,7 +46,9 @@ function Details({ match }) {
 
             })
             .catch(err => console.log(err))
-    }, [details]);
+    }, [details ]);
+
+    console.log(details)
 
     let keywords = [];
     if (details.keywords) {
@@ -46,7 +62,7 @@ function Details({ match }) {
 
 
     useEffect(() => {
-        axios.get('http://54.220.211.123:1334/articles')
+        axios.get('http://54.220.211.123:1335/articles')
             .then(async res => {
 
                 await setCardData(res.data);
@@ -96,7 +112,9 @@ function Details({ match }) {
 
                 <div className="style-wrapper">
                     <div className="Wrapper-bg">
-                        <div className="innerWrapper">
+                    
+
+                            <div className="innerWrapper">
                             <h1 className="Title">{details.title}</h1>
 
                             <div className="Ratio">
@@ -125,6 +143,10 @@ function Details({ match }) {
 
                             </div>
                         </div>
+
+                        
+                    
+                      
 
                     </div>
                     <div className="ContentWrapper">
@@ -207,12 +229,12 @@ function Details({ match }) {
 
                                     </div>
                                     <div className="separator"></div>
+                                   
                                     <div className="details">
-                                        <blockquote>
-                                            This article is a guest post by <Link to="/" className="nameAuth">{details.author}</Link>
-                                     . He wrote this blog post through the Write for the Community program. If you are passionate about everything jamstack, open-source or javascript .
+                                        <blockquote dangerouslySetInnerHTML={{ __html: details.abstract }}>
+                                            
                                      </blockquote>
-                                        <div className="ContentDetails" dangerouslySetInnerHTML={{ __html: details.content }}/>
+                                        <div className="ContentDetails" dangerouslySetInnerHTML={{ __html: details.body }}/>
                                         <div className="separator3"></div>
                                         {/* <span className="bar">
                                             <span className="jquery"></span>
@@ -288,9 +310,9 @@ function Details({ match }) {
                                         <MiniCard
                                             image={article.image ? BACKEND_URL + article.image.url : null}
                                             title={article.title}
-                                            text={article.text}
+                                            text={article.abstract}
                                             name={article.author}
-                                            date={article.date}
+                                            date={article.publishDate}
                                             slug={article.slug}
                                         />
                                     ))

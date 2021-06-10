@@ -306,7 +306,7 @@
     max-height: 230px;
     overflow: auto;
     list-style: none;
-    width: 200px;
+    width: 250px;
    position: relative;
    
    
@@ -325,7 +325,7 @@
     box-sizing: border-box;
     user-select: none;
     border-radius: 3px;
-    font-size: 15px;
+    font-size: 14px;
     line-height: 22px;
     color: #9f4fd8;
     font-weight: 400;
