@@ -35,7 +35,6 @@ export default function Blog() {
     }, []);
 
 
-console.log({card})
 
 
 
@@ -117,7 +116,7 @@ console.log({card})
 
                                         <Card
 
-                                            image={item.image ? BACKEND_URL + item.image.url : null}
+                                            image={item.image ? item.image : null}
                                              tag={item.categories.length >= 0 ? item.categories :null}
                                             title={item.title}
                                             abstract={item.abstract}

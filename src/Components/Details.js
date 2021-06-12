@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import NewsLetterBanner from './NewsLetterBanner';
 import MiniCard from './MiniCard';
-
+import ReactPlayer from 'react-player'
+import videoExtensions from 'video-extensions'
 
 function Details({ match }) {
     const slug = match.params.slug;
     const [details, SetDetails] = useState([]);
-    const [identify,setIdentify]=useState("");
+    const [identify, setIdentify] = useState("");
     const [cardData, setCardData] = useState([]);
     const [title, setTitle] = useState('');
     const BACKEND_URL = "http://54.220.211.123:1335";
@@ -20,16 +21,16 @@ function Details({ match }) {
 
     useEffect(() => {
         axios.get(`http://54.220.211.123:1334/articles/${slug}`)
-            .then( res => {
+            .then(res => {
 
-                 setIdentify(res.data.id);
-                
+                setIdentify(res.data.id);
+
 
 
             })
             .catch(err => console.log(err))
     }, []);
-     
+
     console.log(identify)
 
 
@@ -46,7 +47,7 @@ function Details({ match }) {
 
             })
             .catch(err => console.log(err))
-    }, [details ]);
+    }, [details]);
 
     console.log(details)
 
@@ -112,24 +113,57 @@ function Details({ match }) {
 
                 <div className="style-wrapper">
                     <div className="Wrapper-bg">
-                    
 
-                            <div className="innerWrapper">
+
+                        <div className="innerWrapper">
                             <h1 className="Title">{details.title}</h1>
 
                             <div className="Ratio">
                                 <div className="children">
                                     {
-                                        details.image ? (
-                                            <div className="style-ratio">
-                                                <img src={BACKEND_URL + details.image.url} className="Img" />
+                                        details.image && details.image.url !== null && videoExtensions.includes(details.image.ext.substring(1)) === true && (
+
+                                            <div className="style-ratios">
+                                                <ReactPlayer
+                                                    width='100%'
+                                                    height='100%'
+                                                    controls
+                                                    url={`http://54.220.211.123:1335${details.image.url}`}
+                                                    className="Imgs" />
                                             </div>
 
-                                        ) : (
-                                            <div className="def">
+                                        )
 
-                                                <img src="/images/default.png" className="Img" />
-                                                <p className="defaultCat">{details.category ? details.category.name : null}</p>
+                                    }
+
+                                    {
+                                        details.image && videoExtensions.includes(details.image.ext.substring(1)) === false && (
+                                            <div className="style-ratios">
+                                                <img src={BACKEND_URL + details.image.url} className="Imgs" />
+                                            </div>
+
+                                        )
+
+                                    }
+
+                                    {
+                                        !details.image && (
+
+                                            <div className="style-ratios">
+
+                                                <img src="/images/default.png" className="Imgs" />
+                                                <ul className="styles_tags">
+
+                                                    {
+                                                        details.categories && details.categories.length > 0  && (
+                                                            details.categories.map(tag => (
+
+                                                                <li className="style_tag"><p className="defaultCat">{tag.name}</p></li>
+                                                            ))
+                                                        )
+                                                    }
+                                                </ul>
+                                                {/* <p className="defaultCat">{details.category ? details.category.name : null}</p> */}
                                                 <span className="defaultTitle">{details.title}</span>
                                             </div>
 
@@ -144,9 +178,9 @@ function Details({ match }) {
                             </div>
                         </div>
 
-                        
-                    
-                      
+
+
+
 
                     </div>
                     <div className="ContentWrapper">
@@ -229,12 +263,12 @@ function Details({ match }) {
 
                                     </div>
                                     <div className="separator"></div>
-                                   
+
                                     <div className="details">
                                         <blockquote dangerouslySetInnerHTML={{ __html: details.abstract }}>
-                                            
-                                     </blockquote>
-                                        <div className="ContentDetails" dangerouslySetInnerHTML={{ __html: details.body }}/>
+
+                                        </blockquote>
+                                        <div className="ContentDetails" dangerouslySetInnerHTML={{ __html: details.body }} />
                                         <div className="separator3"></div>
                                         {/* <span className="bar">
                                             <span className="jquery"></span>
@@ -242,44 +276,44 @@ function Details({ match }) {
                                         {
                                             details.category ? (
                                                 <div className="CateLabel">Category:  <span>{details.category.name}</span></div>
-                                            ): null
+                                            ) : null
                                         }
 
                                         {
-                                            details.channel ?(
+                                            details.channel ? (
                                                 <div className="CateLabel">Channel:  <span>{details.channel.name}</span></div>
-                                            ) :null
+                                            ) : null
                                         }
                                         {
                                             details.issue ? (
                                                 <div className="CateLabel">Issue:  <span>{details.issue.name}</span></div>
-                                            ):null
+                                            ) : null
                                         }
-                            
+
 
                                     </div>
                                 </div>
 
                             </div>
                             {
-                               details.sources && details.sources.length > 0 ?  ( 
-                                   <div className="SourceInnerContentContainer" >
-                                    <div className="SourceContent">
-                                    <div className="sourceLabel">Sources: </div>
-                                    <div className="separator2"></div>
-                                      {details.sources.map(source=>(
-                                          <div className="">
-                                          <a href={source.url} className="sourceLinks">{source.name}</a>
-                                          </div>
+                                details.sources && details.sources.length > 0 ? (
+                                    <div className="SourceInnerContentContainer" >
+                                        <div className="SourceContent">
+                                            <div className="sourceLabel">Sources: </div>
+                                            <div className="separator2"></div>
+                                            {details.sources.map(source => (
+                                                <div className="">
+                                                    <a href={source.url} className="sourceLinks">{source.name}</a>
+                                                </div>
 
-                                          
-                                      ))
-                                      }
-                                     </div>
 
-                            </div>)     : null
+                                            ))
+                                            }
+                                        </div>
+
+                                    </div>) : null
                             }
-                           
+
                         </div>
                     </div>
                 </div>

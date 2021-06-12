@@ -119,7 +119,7 @@
     max-width: 80%;
 }
 
-.innerWrapper .Ratio{
+ .innerWrapper .Ratio{
     padding-bottom: 62.5%;
     margin-bottom: 80px;
     border-radius: 8px;
@@ -136,8 +136,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-}
-.innerWrapper .Ratio .children .ImageCover{
+} 
+.innerWrapper .Ratio .children .ImageCovers{
     position: relative;
     width: 100%;
     height: 100%;
@@ -146,7 +146,7 @@
     
     
 }
-.children .ImageCover .style-ratio{
+.children  .style-ratios{
     position: absolute;
     top: 0;
     left: 0;
@@ -154,7 +154,7 @@
     height: 100%;
 
 }
-.children .ImageCover .style-ratio .Img{
+.children  .style-ratios .Imgs{
     opacity: 1;
     visibility: inherit;
     position: absolute;
@@ -162,7 +162,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    /* object-fit: cover; */
     object-position: center;
 }
 
@@ -495,7 +495,7 @@ color: #5813cf;
 }
 
 
-.def .defaultCat{
+.style-ratios .defaultCat{
   color: rgb(218, 214, 214);
   position: relative;
   font-size: 30px;
@@ -504,18 +504,21 @@ color: #5813cf;
   text-transform: uppercase;
   font-weight: 700;
   filter: blur(.4px);
+  letter-spacing: 2px;
 }
 
-.def .defaultTitle{
+.style-ratios .defaultTitle{
   color: rgb(252, 248, 248);
   position: absolute;
   text-align: center;
-  font-size: 43px;
+  font-size: 45px;
   font-weight: 700;
-  margin-left: 20px;
-  margin-right: 20px;
+ margin-top: 200px;
+ letter-spacing: 1px;
+  
+  
   filter: blur(.6px);
-  margin-top: -10px;
+  
 }
 
 
@@ -584,8 +587,8 @@ letter-spacing: 1px;
 }
 
 .ContentDetails img{
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: auto;
   position: relative;
 }
 

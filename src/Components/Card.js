@@ -1,9 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './Card.css'
+import videoExtensions from 'video-extensions'
+import ReactPlayer from 'react-player'
 
 
 function Card(props) {
+    const BACKEND_URL = "http://54.220.211.123:1335"
+    console.log(props)
+
+
+
     return (
         <div className="cardContainer">
             <Link to={`/blog/${props.slug}`} className="cardArrowLink">
@@ -17,22 +24,68 @@ function Card(props) {
                                 <div className="childH">
 
                                     {
-                                        props.image && props.image.url !== null ? (
+
+                                        props.image && props.image.url !== null && videoExtensions.includes(props.image.ext.substring(1)) === true && (
+
                                             <div className="CoverImgH">
                                                 <div className="CoverRatioH">
-                                                    <img src={props.image} className="ImgH" />
+                                                    <ReactPlayer
+                                                        width='330px'
+                                                        height="200px"
+                                                        controls
+
+
+
+
+                                                        url={`http://54.220.211.123:1335${props.image.url}`}
+                                                        className="imgH" />
+
+                                                </div>
+
+
+                                            </div>
+
+                                        )
+
+                                    }
+
+                                    {
+                                        props.image && props.image.url !== null && videoExtensions.includes(props.image.ext) === false && (
+                                            <div className="CoverImgH">
+                                                <div className="CoverRatioH">
+                                                    <img src={BACKEND_URL + props.image.url} className="ImgH" />
                                                     {/* <div className="ImgH" dangerouslySetInnerHTML={{ __html: props.image }}></div> */}
                                                 </div>
 
 
                                             </div>
-                                        ) : (
-                                            <>
+                                        )
 
-                                                <img src="/images/default.png" className="Img" />
-                                                <p className="defaultCat">{props.tag}</p>
-                                                <span className="defaultTitle">{props.title}</span>
+                                    }
+
+                                    {
+                                        props.image === null && (
+                                            <>
+                                                <div className="CoverImgH">
+                                                    <div className="CoverRatioH">
+                                                        <img src="/images/default.png" className="ImgH" />
+                                                        <ul className="defUl" >
+
+                                                            {
+                                                                props.tag && (
+                                                                    props.tag.map(tag => (
+
+                                                                        <li className="defLi" ><p className="defaultCat">{tag.name}</p></li>
+                                                                    ))
+                                                                )
+                                                            }
+                                                        </ul>
+                                                        <p className="defaultCat"></p>
+                                                        <span className="defaultTitle">{props.title}</span>
+                                                    </div>
+                                                </div>
                                             </>
+
                                         )
 
                                     }
@@ -63,7 +116,7 @@ function Card(props) {
                             </ul>
                             {/* <div className="tags"><span className="Tag"><span>{props.tag}</span></span></div> */}
                             <h2 >{props.title}</h2>
-                            <p >{props.abstract }</p>
+                            <p >{props.abstract}</p>
                             <div className="author">
                                 <p className="name">Author: {props.name}</p>
                                 {

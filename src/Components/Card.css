@@ -126,7 +126,7 @@ transform: perspective(100px) scale(1.03 , 1.03) !important;
     height: 100%;
 }
 
-.child .CoverImgH{
+.childH .CoverImgH{
     position: relative;
     width: 100%;
     overflow: hidden;
@@ -135,7 +135,7 @@ transform: perspective(100px) scale(1.03 , 1.03) !important;
 
 }
 
-.child .CoverImg .CoverRatioH{
+.childH .CoverImg .CoverRatioH{
     position: absolute;
     top: 0;
     left: 0;
@@ -150,26 +150,28 @@ transform: perspective(100px) scale(1.03 , 1.03) !important;
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    object-position: center;
-    object-fit: cover;
+    /* width: 330px;
+    height: 190px; */
+     /* object-position: center; */
+    /* object-fit: cover;  */
+    width: 99%;
+    height: 99%;
 
 }
 
 
-.ImgH{
+/* .ImgH{
     opacity: 1;
     visibility: inherit;
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 90%;
     object-position: center;
     object-fit: cover;
 
-}
+} */
 
 .card-content .content{
 display: flex;
@@ -275,23 +277,26 @@ flex: 1 1;
 .defaultCat{
     color: rgb(218, 214, 214);
     position: relative;
-    font-size: 10px;
+    font-size: 11px;
     text-align: center;
-    margin-top: 15px;
+    /* margin-top: 5px; */
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 500;
     filter: blur(.4px);
+    margin-right: 5px;
 }
 
 .defaultTitle{
     color: rgb(252, 248, 248);
-    position: absolute;
+    position: relative;
     text-align: center;
+    justify-content: center;
     font-size: 15px;
     font-weight: 600;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 27%;
     filter: blur(.4px);
+    top: -30px;
+    
 }
 
 .voting{
@@ -406,7 +411,7 @@ flex: 1 1;
 
 .listCardContent .styles_tags{
     width: 100%;
-    /* display: inline-block; */
+    display: inline-block;
     margin-bottom: 14px;
     /* text-decoration: none; */
     list-style: none;
@@ -433,19 +438,20 @@ flex: 1 1;
     top: 50%;
     right: -5px;
     transform: translateY(-50%);
-    width: 1px;
-    height: 0px;
+    width: 3px;
+    height: 2px;
     border-radius: 20px;
     background-color: #13bb70;
+    
 }
 
 .Tag{
-    
+    width: 100%;
     line-height: 1;
     text-transform: uppercase;
     letter-spacing: 1px;
-    font-weight: 600;
-    font-size: 12px;
+    font-weight: 500;
+    font-size: 11px;
     line-height: 10px;
     color: #13bb70;
     
@@ -454,3 +460,32 @@ flex: 1 1;
 .abstract{
     font-size: 11px !important;
 }
+
+
+.defLi{
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    top: -15px;
+   
+}
+
+
+
+
+.defUl{
+    text-decoration: none;
+    margin-right: 30px;
+    text-align: center;
+    position: relative;
+   
+    
+}
+
+/* .defUl .defLi:not(:last-child):after{
+    content: ".";
+    color: #fff;
+    position: relative;
+    left: -10px;
+} */
+
