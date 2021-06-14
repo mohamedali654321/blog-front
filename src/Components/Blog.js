@@ -10,7 +10,7 @@ export default function Blog() {
     const query = new URLSearchParams(useLocation().search);
     const [visible, setVisible] = useState(12);
     const [card, setCard] = useState([]);
-    const [locale, setLocale] = useState("");
+    const [locale, setLocale] = useState("en");
     const history = useHistory();
     const BACKEND_URL = "http://54.220.211.123:1335"
     const endPoint = "http://54.220.211.123:1335/articles?_sort=date:desc" 
@@ -24,24 +24,25 @@ export default function Blog() {
     }
 
 
+  
+
     useEffect(() => {
-        axios.get("http://54.220.211.123:1335/articles?_sort=publishDate:desc").
+        axios.get("http://54.220.211.123:1335/articles?_sort=publishDate:desc&_locale="+ localStorage.getItem("locale") ).
             then(async res => {
                 await setCard(res.data);
                 console.log(res.data)
 
             })
             .catch(err => console.log(err))
-    }, []);
+    }, [ card]);
 
 
 
 
-
-    function setLang() {
-        setLocale(window.locales.value);
-        history.push("/blog?_locale=" + window.locales.value);
-    }
+    // function setLang() {
+    //     setLocale(window.locales.value);
+    //     history.push("/blog?_locale=" + window.locales.value);
+    // }
 
     return (
         <div className="container" >

@@ -18,6 +18,8 @@ import HomePage from './Home/HomePage'
 
 
 function App() {
+
+  
   return (
     <div className="App">
     <Router>
@@ -25,7 +27,7 @@ function App() {
       <Switch>
         <Route path="/" exact component={HomePage} /> 
         <Route path="/blog" exact  component={MainPage} />
-        <Route path="/blog/:slug" exact component={Details}/>
+        <Route path="/:locale/blog/:slug" exact component={Details}/>
         <Route path="/our-partners" exact component={OurPartners} />
         <Route path="/our-clients" exact component={OurClints} />
         <Route path="/sys-solutions" exact component={SysSolutions} />

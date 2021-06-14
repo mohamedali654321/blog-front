@@ -8,12 +8,12 @@ import ReactPlayer from 'react-player'
 function Card(props) {
     const BACKEND_URL = "http://54.220.211.123:1335"
     console.log(props)
-
+   const locale =localStorage.getItem("locale")
 
 
     return (
         <div className="cardContainer">
-            <Link to={`/blog/${props.slug}`} className="cardArrowLink">
+            <Link to={`/${locale}/blog/${props.slug}`} className="cardArrowLink">
                 <div className="card-bg">
                     <div className="background"></div>
                 </div>
@@ -155,7 +155,7 @@ function Card(props) {
                                 
                             </div> */}
 
-                            <div className="CourseCard">
+                            {/* <div className="CourseCard">
                                 <div className="likeButton">
                                     <img src="/images/like.svg" />
                                 </div>
@@ -165,7 +165,7 @@ function Card(props) {
                                 </div>
 
 
-                            </div>
+                            </div> */}
 
                         </div>
 

@@ -14,31 +14,31 @@ function Details({ match }) {
     const [cardData, setCardData] = useState([]);
     const [title, setTitle] = useState('');
     const BACKEND_URL = "http://54.220.211.123:1335";
-    const endPoint = `http://54.220.211.123:1334/articles?id=${identify}`;
-    const postUrl = encodeURI(endPoint);
-    console.log(postUrl)
-    const facebookURL = `https://www.facebook.com/sharer.php?u=${postUrl}`
+    // const endPoint = `http://54.220.211.123:1335/articles?id=${identify}`;
+    // const postUrl = encodeURI(endPoint);
+    // console.log(postUrl)
+    // const facebookURL = `https://www.facebook.com/sharer.php?u=${postUrl}`
+
+    // useEffect(() => {
+    //     axios.get(`http://54.220.211.123:1335/articles/${slug}`)
+    //         .then(res => {
+
+    //             setIdentify(res.data.id);
+
+
+
+    //         })
+    //         .catch(err => console.log(err))
+    // }, [slug]);
+
+    
+
+
+
+
 
     useEffect(() => {
-        axios.get(`http://54.220.211.123:1334/articles/${slug}`)
-            .then(res => {
-
-                setIdentify(res.data.id);
-
-
-
-            })
-            .catch(err => console.log(err))
-    }, []);
-
-    console.log(identify)
-
-
-
-
-
-    useEffect(() => {
-        axios.get(`http://54.220.211.123:1335/articles/${slug}`)
+        axios.get(`http://54.220.211.123:1335/articles?slug=${slug}&_locale=${localStorage.getItem("locale")}`)
             .then(async res => {
 
                 await SetDetails(res.data);
@@ -47,7 +47,7 @@ function Details({ match }) {
 
             })
             .catch(err => console.log(err))
-    }, [details]);
+    }, [details,slug]);
 
     console.log(details)
 
@@ -63,13 +63,13 @@ function Details({ match }) {
 
 
     useEffect(() => {
-        axios.get('http://54.220.211.123:1335/articles')
+        axios.get("http://54.220.211.123:1335/articles?_sort=publishDate:desc&_locale="+ localStorage.getItem("locale"))
             .then(async res => {
 
                 await setCardData(res.data);
             })
             .catch(err => console.log(err))
-    }, []);
+    }, [cardData]);
 
 
 
@@ -109,9 +109,11 @@ function Details({ match }) {
 
 
             <section className="styles-gradient-right">
+            {
+                details.map(details =>(
 
 
-                <div className="style-wrapper">
+                    <div className="style-wrapper">
                     <div className="Wrapper-bg">
 
 
@@ -189,7 +191,7 @@ function Details({ match }) {
                                 <ul className="share">
                                     <li className="socialMedia">
 
-                                        <Link to={facebookURL} className="Button" style={{ color: "#4e6294" }}>
+                                        <Link to="" className="Button" style={{ color: "#4e6294" }}>
 
                                             <div className="Icon">
                                                 <i className="fab fa-facebook-f"></i>
@@ -317,6 +319,12 @@ function Details({ match }) {
                         </div>
                     </div>
                 </div>
+
+                ))
+            }
+
+
+                
             </section>
             <div className="RelatedArticlesGrid">
                 <div className="MaxWidth">

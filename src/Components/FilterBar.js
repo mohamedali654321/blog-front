@@ -4,7 +4,7 @@ import './FilterBar.css'
 
 function FilterBar() {
      const [categories,setCategories]=useState([]);
-     const endPoint='http://54.220.211.123:1335/categories'
+     const endPoint='http://54.220.211.123:1335/categories?_locale=' + localStorage.getItem("locale")
     
     const [show,setShow]=useState(false);
     const showCategory =()=>{
@@ -17,7 +17,7 @@ function FilterBar() {
             
 
         }).catch(err=>console.log(err))
-    },[]);
+    },[categories]);
 
     useEffect(()=>{
         document.addEventListener("mouseup",()=>{setShow(false)});
