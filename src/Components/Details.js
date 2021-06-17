@@ -9,30 +9,17 @@ import videoExtensions from 'video-extensions'
 
 function Details({ match }) {
     const slug = match.params.slug;
-    const [details, SetDetails] = useState([]);
-    const [identify, setIdentify] = useState("");
+    const [details, setDetails] = useState([]);
+    const [id, setId] = useState("");
+    // const [title,setTitle]=useState()
+    const [currentLocale, setCurrentLocale] = useState("")
+    const [convertLocale, setConvertLocale] = useState("")
     const [cardData, setCardData] = useState([]);
+    const [localeData, setLocaleData] = useState([]);
+    const [locales, setLocales] = useState([])
     const [title, setTitle] = useState('');
+    const [testData, setTestData] = useState([])
     const BACKEND_URL = "http://54.220.211.123:1335";
-    // const endPoint = `http://54.220.211.123:1335/articles?id=${identify}`;
-    // const postUrl = encodeURI(endPoint);
-    // console.log(postUrl)
-    // const facebookURL = `https://www.facebook.com/sharer.php?u=${postUrl}`
-
-    // useEffect(() => {
-    //     axios.get(`http://54.220.211.123:1335/articles/${slug}`)
-    //         .then(res => {
-
-    //             setIdentify(res.data.id);
-
-
-
-    //         })
-    //         .catch(err => console.log(err))
-    // }, [slug]);
-
-    
-
 
 
 
@@ -41,36 +28,116 @@ function Details({ match }) {
         axios.get(`http://54.220.211.123:1335/articles?slug=${slug}&_locale=${localStorage.getItem("locale")}`)
             .then(async res => {
 
-                await SetDetails(res.data);
-                await setTitle(res.data.title)
+                await setDetails(res.data);
+                details.map(details=>{
+                    setCurrentLocale(details.locale);
+                    
+                    details.localizations.map(item=>{
+                        setId(item.id);
+                        setConvertLocale(item.locale);
+
+                        
+                    })
+                })
+
+              
+
+                // setLocales(res.data[0].localizations);
+                // setConvertLocale(locales[0].locale)
+                // setId(locales[0].id)
+
+                // if(res.data[0].localizations.length > 0){
+                //     await setLocales(res.data[0].localizations[0] !== null ? res.data[0].localizations[0] : null);
+                //     await setId(res.data[0].localizations[0].id !== null ? res.data[0].localizations[0].id : null );
+                //     await setConvertLocale(res.data[0].localizations[0].locale  !== null ? res.data[0].localizations[0].locale : null)
+
+                // }
+
+
 
 
             })
-            .catch(err => console.log(err))
-    }, [details,slug]);
+            .catch(err => console.log(err));
 
-    console.log(details)
+
+            
+
+
+
+    }, [details]);
+
+    
+
+ 
+
+
+
+    useEffect(()=>{
+
+        if(localStorage.getItem("locale") != currentLocale)
+        {
+            axios.get(`http://54.220.211.123:1335/articles?id=${id}&_locale=${convertLocale}`)
+            .then(async res => {
+    
+               
+                    await setLocaleData(res.data);
+                    
+                
+            })
+            .catch(err => console.log(err))
+    
+
+        }
+
+
+        if(localStorage.getItem("locale") == currentLocale){
+
+
+            axios.get(`http://54.220.211.123:1335/articles?slug=${slug}&_locale=${localStorage.getItem("locale")}`)
+            .then(async res => {
+
+                await setLocaleData(res.data);
+            
+
+            })
+            .catch(err => console.log(err));
+        }
+    
+       
+    
+
+
+    },[localeData])
+
+
+console.log({localeData})
 
     let keywords = [];
-    if (details.keywords) {
-        details.keywords.map(item => {
 
-            keywords.push(item.word.toLocaleLowerCase())
-        });
+    details.map(details=>{
+        if (details.keywords.length > 0) {
+            details.keywords.map(item => {
+    
+                keywords.push(item.word.toLocaleLowerCase())
+            });
+    
+        }
+    
 
-    }
+    })
+    
 
 
 
     useEffect(() => {
-        axios.get("http://54.220.211.123:1335/articles?_sort=publishDate:desc&_locale="+ localStorage.getItem("locale"))
+        axios.get("http://54.220.211.123:1335/articles?_sort=publishDate:desc&_locale=" + localStorage.getItem("locale"))
             .then(async res => {
 
                 await setCardData(res.data);
+
             })
             .catch(err => console.log(err))
-    }, [cardData]);
-
+    }, []);
 
 
 
@@ -96,6 +163,8 @@ function Details({ match }) {
 
     }
 
+    
+
     return (
         <div className="Container" >
             <div className="HomeLinkWrapper">
@@ -109,222 +178,253 @@ function Details({ match }) {
 
 
             <section className="styles-gradient-right">
-            {
-                details.map(details =>(
+                {
+                    localeData.map(details => (
 
 
-                    <div className="style-wrapper">
-                    <div className="Wrapper-bg">
+                        <div className="style-wrapper">
+                            <div className="Wrapper-bg">
 
 
-                        <div className="innerWrapper">
-                            <h1 className="Title">{details.title}</h1>
+                                <div className="innerWrapper">
 
-                            <div className="Ratio">
-                                <div className="children">
-                                    {
-                                        details.image && details.image.url !== null && videoExtensions.includes(details.image.ext.substring(1)) === true && (
+                                    <h1 className="Title">{details.title}</h1>
 
-                                            <div className="style-ratios">
-                                                <ReactPlayer
-                                                    width='100%'
-                                                    height='100%'
-                                                    controls
-                                                    url={`http://54.220.211.123:1335${details.image.url}`}
-                                                    className="Imgs" />
-                                            </div>
+                                    <div className="Ratio">
+                                        <div className="children">
+                                            {
+                                               details.coverMedia === null && details.image && details.image.url !== null && videoExtensions.includes(details.image.ext.substring(1)) === true && (
 
-                                        )
+                                                    <div className="style-ratios">
+                                                        <ReactPlayer
+                                                            width='100%'
+                                                            height='100%'
+                                                            controls
+                                                            url={`http://54.220.211.123:1335${details.image.url}`}
+                                                            className="Imgs" />
+                                                    </div>
 
-                                    }
+                                                )
 
-                                    {
-                                        details.image && videoExtensions.includes(details.image.ext.substring(1)) === false && (
-                                            <div className="style-ratios">
-                                                <img src={BACKEND_URL + details.image.url} className="Imgs" />
-                                            </div>
+                                            }
 
-                                        )
+                                            {
+                                                details.coverMedia === null &&  details.image && videoExtensions.includes(details.image.ext.substring(1)) === false && (
+                                                    <div className="style-ratios">
+                                                        <img src={BACKEND_URL + details.image.url} className="Imgs" />
+                                                    </div>
 
-                                    }
+                                                )
 
-                                    {
-                                        !details.image && (
+                                            }
 
-                                            <div className="style-ratios">
-
-                                                <img src="/images/default.png" className="Imgs" />
-                                                <ul className="styles_tags">
-
-                                                    {
-                                                        details.categories && details.categories.length > 0  && (
-                                                            details.categories.map(tag => (
-
-                                                                <li className="style_tag"><p className="defaultCat">{tag.name}</p></li>
-                                                            ))
-                                                        )
-                                                    }
-                                                </ul>
-                                                {/* <p className="defaultCat">{details.category ? details.category.name : null}</p> */}
-                                                <span className="defaultTitle">{details.title}</span>
-                                            </div>
-
-                                        )
-
-                                    }
+                                            {
+                                                details.coverMedia !== null && details.coverMedia.url !== null && videoExtensions.includes(details.coverMedia.ext.substring(1)) === false &&(
+                                                    <div className="style-ratios">
+                                                        <img src={BACKEND_URL + details.coverMedia.url} className="Imgs" />
+                                                    </div>
+                                                )
 
 
+                                            }
 
-                                </div>
+                                            {
+                                                details.coverMedia && details.coverMedia.url !== null && videoExtensions.includes(details.coverMedia.ext.substring(1)) === true &&(
 
-                            </div>
-                        </div>
+                                                    <div className="style-ratios">
+                                                        <ReactPlayer
+                                                            width='100%'
+                                                            height='100%'
+                                                            controls
+                                                            url={`http://54.220.211.123:1335${details.coverMedia.url}`}
+                                                            className="Imgs" />
+                                                    </div>
 
+                                                )
 
+                                            }
 
+                                            {
+                                                !details.image && !details.coverMedia &&(
 
+                                                    <div className="style-ratios">
 
-                    </div>
-                    <div className="ContentWrapper">
-                        <div className="ContentContainer">
-                            <div className="ShareContainer">
-                                <ul className="share">
-                                    <li className="socialMedia">
+                                                        <img src="/images/default.png" className="Imgs" />
+                                                        <ul className="styles_tags">
 
-                                        <Link to="" className="Button" style={{ color: "#4e6294" }}>
+                                                            {
+                                                                details.categories && details.categories.length > 0 && (
+                                                                    details.categories.map(tag => (
 
-                                            <div className="Icon">
-                                                <i className="fab fa-facebook-f"></i>
-                                            </div>
+                                                                        <li className="style_tag"><p className="defaultCat">{tag.name}</p></li>
+                                                                    ))
+                                                                )
+                                                            }
+                                                        </ul>
+                                                        
+                                                        <span className="defaultTitle">{details.title}</span>
+                                                    </div>
 
-                                        </Link>
+                                                )
 
-                                    </li>
-
-                                    <li className="socialMedia">
-                                        <Link to="/" className="Button" style={{ color: "#4e6294" }}>
-                                            <div className="Icon">
-                                                <i className="fab fa-twitter" ></i>
-                                            </div>
-
-                                        </Link>
-                                    </li>
-
-                                    <li className="socialMedia">
-                                        <Link to="/" className="Button" style={{ color: "#4e6294" }}>
-                                            <div className="Icon">
-                                                <i className="fab fa-linkedin"></i>
-                                            </div>
-
-                                        </Link>
-                                    </li>
-
-                                    <li className="socialMedia">
-                                        <Link to="/" className="Button" style={{ color: "#4e6294" }}>
-                                            <div className="Icon">
-                                                <i className="fab fa-youtube"></i>
-                                            </div>
-
-                                        </Link>
-                                    </li>
-                                    <li className="socialMedia">
-                                        <Link to="/" className="Button" style={{ color: "#4e6294" }}>
-                                            <div className="Icon">
-                                                <i className="far fa-envelope"></i>
-                                            </div>
-
-                                        </Link>
-                                    </li>
-
-                                    <li className="socialMedia">
-                                        <Link to="/" className="Button" style={{ color: "#4e6294" }}>
-                                            <div className="Icon">
-                                                <i className="fab fa-tiktok"></i>
-                                            </div>
-
-                                        </Link>
-                                    </li>
+                                            }
 
 
-                                </ul>
 
-                            </div>
-                            <div className="InnerContentContainer">
-                                <div className="Content">
-                                    <div className="Author">
-                                        <div className="style-image">
-                                            <div className="ratio">
-                                                <img src="/images/51f6fb256629fc755b8870c801092942.png" className="avatar" />
-                                            </div>
+
+
+
                                         </div>
-                                        <div >
-                                            <p className="auth"> Author: {details.author}</p>
-                                            <p className="translate">Translated by: {details.translator}</p>
-                                            <p className="date">Published Date: {details.date}</p>
-                                        </div>
-
-                                    </div>
-                                    <div className="separator"></div>
-
-                                    <div className="details">
-                                        <blockquote dangerouslySetInnerHTML={{ __html: details.abstract }}>
-
-                                        </blockquote>
-                                        <div className="ContentDetails" dangerouslySetInnerHTML={{ __html: details.body }} />
-                                        <div className="separator3"></div>
-                                        {/* <span className="bar">
-                                            <span className="jquery"></span>
-                                        </span> */}
-                                        {
-                                            details.category ? (
-                                                <div className="CateLabel">Category:  <span>{details.category.name}</span></div>
-                                            ) : null
-                                        }
-
-                                        {
-                                            details.channel ? (
-                                                <div className="CateLabel">Channel:  <span>{details.channel.name}</span></div>
-                                            ) : null
-                                        }
-                                        {
-                                            details.issue ? (
-                                                <div className="CateLabel">Issue:  <span>{details.issue.name}</span></div>
-                                            ) : null
-                                        }
-
 
                                     </div>
                                 </div>
 
+
+
+
+
                             </div>
-                            {
-                                details.sources && details.sources.length > 0 ? (
-                                    <div className="SourceInnerContentContainer" >
-                                        <div className="SourceContent">
-                                            <div className="sourceLabel">Sources: </div>
-                                            <div className="separator2"></div>
-                                            {details.sources.map(source => (
-                                                <div className="">
-                                                    <a href={source.url} className="sourceLinks">{source.name}</a>
+                            <div className="ContentWrapper">
+                                <div className="ContentContainer">
+                                    <div className="ShareContainer">
+                                        <ul className="share">
+                                            <li className="socialMedia">
+
+                                                <Link to="" className="Button" style={{ color: "#4e6294" }}>
+
+                                                    <div className="Icon">
+                                                        <i className="fab fa-facebook-f"></i>
+                                                    </div>
+
+                                                </Link>
+
+                                            </li>
+
+                                            <li className="socialMedia">
+                                                <Link to="/" className="Button" style={{ color: "#4e6294" }}>
+                                                    <div className="Icon">
+                                                        <i className="fab fa-twitter" ></i>
+                                                    </div>
+
+                                                </Link>
+                                            </li>
+
+                                            <li className="socialMedia">
+                                                <Link to="/" className="Button" style={{ color: "#4e6294" }}>
+                                                    <div className="Icon">
+                                                        <i className="fab fa-linkedin"></i>
+                                                    </div>
+
+                                                </Link>
+                                            </li>
+
+                                            <li className="socialMedia">
+                                                <Link to="/" className="Button" style={{ color: "#4e6294" }}>
+                                                    <div className="Icon">
+                                                        <i className="fab fa-youtube"></i>
+                                                    </div>
+
+                                                </Link>
+                                            </li>
+                                            <li className="socialMedia">
+                                                <Link to="/" className="Button" style={{ color: "#4e6294" }}>
+                                                    <div className="Icon">
+                                                        <i className="far fa-envelope"></i>
+                                                    </div>
+
+                                                </Link>
+                                            </li>
+
+                                            <li className="socialMedia">
+                                                <Link to="/" className="Button" style={{ color: "#4e6294" }}>
+                                                    <div className="Icon">
+                                                        <i className="fab fa-tiktok"></i>
+                                                    </div>
+
+                                                </Link>
+                                            </li>
+
+
+                                        </ul>
+
+                                    </div>
+                                    <div className="InnerContentContainer">
+                                        <div className="Content">
+                                            <div className="Author">
+                                                <div className="style-image">
+                                                    <div className="ratio">
+                                                        <img src="/images/51f6fb256629fc755b8870c801092942.png" className="avatar" />
+                                                    </div>
+                                                </div>
+                                                <div >
+
+                                                    <p className="auth"> Author: {details.author}</p>
+                                                    <p className="translate">Translated by: {details.translator}</p>
+                                                    <p className="date">Published Date: {details.date}</p>
                                                 </div>
 
+                                            </div>
+                                            <div className="separator"></div>
 
-                                            ))
-                                            }
+                                            <div className="details">
+                                                <blockquote dangerouslySetInnerHTML={{ __html: details.abstract }}>
+
+                                                </blockquote>
+                                                <div className="ContentDetails" dangerouslySetInnerHTML={{ __html: details.body }} />
+                                                <div className="separator3"></div>
+                                                {/* <span className="bar">
+                                            <span className="jquery"></span>
+                                        </span> */}
+                                                {
+                                                    details.category ? (
+                                                        <div className="CateLabel">Category:  <span>{details.category.name}</span></div>
+                                                    ) : null
+                                                }
+
+                                                {
+                                                    details.channel ? (
+                                                        <div className="CateLabel">Channel:  <span>{details.channel.name}</span></div>
+                                                    ) : null
+                                                }
+                                                {
+                                                    details.issue ? (
+                                                        <div className="CateLabel">Issue:  <span>{details.issue.name}</span></div>
+                                                    ) : null
+                                                }
+
+
+                                            </div>
                                         </div>
 
-                                    </div>) : null
-                            }
+                                    </div>
+                                    {
+                                        details.sources && details.sources.length > 0 ? (
+                                            <div className="SourceInnerContentContainer" >
+                                                <div className="SourceContent">
+                                                    <div className="sourceLabel">Sources: </div>
+                                                    <div className="separator2"></div>
+                                                    {details.sources.map(source => (
+                                                        <div className="">
+                                                            <a href={source.url} className="sourceLinks">{source.name}</a>
+                                                        </div>
 
+
+                                                    ))
+                                                    }
+                                                </div>
+
+                                            </div>) : null
+                                    }
+
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                ))
-            }
+                    ))
+                }
 
 
-                
+
             </section>
             <div className="RelatedArticlesGrid">
                 <div className="MaxWidth">

@@ -24,17 +24,17 @@ export default function Blog() {
     }
 
 
-  
+
 
     useEffect(() => {
-        axios.get("http://54.220.211.123:1335/articles?_sort=publishDate:desc&_locale="+ localStorage.getItem("locale") ).
+        axios.get("http://54.220.211.123:1335/articles?_sort=publishDate:desc&_locale="+ localStorage.getItem("locale")).
             then(async res => {
                 await setCard(res.data);
                 console.log(res.data)
 
             })
             .catch(err => console.log(err))
-    }, [ card]);
+    }, [ card,localStorage.getItem("locale")]);
 
 
 

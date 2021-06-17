@@ -9,11 +9,11 @@ function Card(props) {
     const BACKEND_URL = "http://54.220.211.123:1335"
     console.log(props)
    const locale =localStorage.getItem("locale")
-
+   
 
     return (
         <div className="cardContainer">
-            <Link to={`/${locale}/blog/${props.slug}`} className="cardArrowLink">
+            <Link to={`/${localStorage.getItem("locale")}/blog/${props.slug}`} className="cardArrowLink">
                 <div className="card-bg">
                     <div className="background"></div>
                 </div>
