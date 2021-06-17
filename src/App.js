@@ -11,6 +11,7 @@ import SysSolutions from './Components/SysSolutions'
 import Services from './Components/Services'
 import Products from './Components/Products'
 import HomePage from './Home/HomePage'
+import Scroll from './Components/Scroll'
 
 
 
@@ -24,6 +25,7 @@ function App() {
     <div className="App">
     <Router>
     <Header/>
+    <Scroll/>
       <Switch>
         <Route path="/" exact component={HomePage} /> 
         <Route path="/blog" exact  component={MainPage} />

@@ -130,7 +130,7 @@ function Details({ match }) {
 
 
 
-console.log(localeData)
+
     let keywords = [];
 
     details.map(details=>{
