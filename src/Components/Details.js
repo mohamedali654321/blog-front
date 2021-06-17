@@ -12,6 +12,7 @@ function Details({ match }) {
     const [details, setDetails] = useState([]);
     const [id, setId] = useState("");
     // const [title,setTitle]=useState()
+    const [currentId,setCurrentId]=useState("")
     const [currentLocale, setCurrentLocale] = useState("")
     const [convertLocale, setConvertLocale] = useState("")
     const [cardData, setCardData] = useState([]);
@@ -30,11 +31,12 @@ function Details({ match }) {
 
                 await setDetails(res.data);
                 details.map(details=>{
+                    setCurrentId(details.id)
                     setCurrentLocale(details.locale);
-                    
+                    setLocales(details.localizations )
                     details.localizations.map(item=>{
-                        setId(item.id);
-                        setConvertLocale(item.locale);
+                        setId(item.id ? item.id : null);
+                        setConvertLocale(item.locale ? item.locale : null);
 
                         
                     })
@@ -68,19 +70,19 @@ function Details({ match }) {
 
     
 
- 
 
 
 
     useEffect(()=>{
 
-        if(localStorage.getItem("locale") != currentLocale)
+        if(localStorage.getItem("locale") != currentLocale  && locales.length > 0 )
         {
             axios.get(`http://54.220.211.123:1335/articles?id=${id}&_locale=${convertLocale}`)
             .then(async res => {
     
                
                     await setLocaleData(res.data);
+                    
                     
                 
             })
@@ -90,18 +92,35 @@ function Details({ match }) {
         }
 
 
-        if(localStorage.getItem("locale") == currentLocale){
+        if(localStorage.getItem("locale") == currentLocale && locales.length > 0 ){
 
 
             axios.get(`http://54.220.211.123:1335/articles?slug=${slug}&_locale=${localStorage.getItem("locale")}`)
             .then(async res => {
 
                 await setLocaleData(res.data);
+                
             
 
             })
             .catch(err => console.log(err));
         }
+    
+      if(locales.length == 0 ){
+
+        axios.get(`http://54.220.211.123:1335/articles?id=${currentId}&_locale=${currentLocale}`)
+        .then(async res => {
+
+            await setLocaleData(res.data);
+              
+
+        })
+        .catch(err => console.log(err));
+
+        
+
+
+      }
     
        
     
@@ -110,8 +129,8 @@ function Details({ match }) {
     },[localeData])
 
 
-console.log({localeData})
 
+console.log(localeData)
     let keywords = [];
 
     details.map(details=>{
